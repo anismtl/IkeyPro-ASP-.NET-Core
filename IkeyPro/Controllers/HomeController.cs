@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using IkeyPro.Models;
+using IkeyPro.ADO;
+using Microsoft.AspNetCore.Http;
 
 namespace IkeyPro.Controllers
 {
@@ -12,8 +14,12 @@ namespace IkeyPro.Controllers
     {
         public IActionResult Index()
         {
+            var cats = CategorieADO.GetListCategorie();
+            ViewData["Categorie"] = cats;
+
             return View();
         }
+
 
         public IActionResult Privacy()
         {

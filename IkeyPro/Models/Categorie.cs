@@ -8,7 +8,7 @@ namespace IkeyPro.Models
     public class Categorie
     {
         private string idCategorie;
-        private string categorie;
+        private string categorie_Designation;
 
         public Categorie()
         {
@@ -17,7 +17,7 @@ namespace IkeyPro.Models
         public Categorie(string idCategorie, string categorie)
         {
             this.idCategorie = idCategorie;
-            this.categorie = categorie;
+            this.Categorie_Designation = categorie;
         }
 
         public virtual string IdCategorie
@@ -32,15 +32,6 @@ namespace IkeyPro.Models
             }
         }
 
-
-        public virtual string getCategorie()
-        {
-            return categorie;
-        }
-
-        public virtual void setCategorie(string categorie)
-        {
-            this.categorie = categorie;
-        }
+        public string Categorie_Designation { get => categorie_Designation; set => categorie_Designation = value; }
     }
 }

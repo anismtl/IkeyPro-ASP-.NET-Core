@@ -47,6 +47,7 @@ namespace IkeyPro
             }
 
             app.UseStaticFiles();
+            app.UseSession();
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>
