@@ -15,7 +15,9 @@ namespace IkeyPro.Controllers
         public IActionResult Index()
         {
             var cats = CategorieADO.GetListCategorie();
+
             ViewData["Categorie"] = cats;
+
 
             return View();
         }
