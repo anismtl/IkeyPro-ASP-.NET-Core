@@ -19,9 +19,13 @@ namespace IkeyPro.Controllers
         public IActionResult Index()
         {
 
-
+            // var cats = SessionHelper.GetObjectFromJson<List<Categorie>>(HttpContext.Session, "SessionListCategorie");
+            // ViewBag.cart = cats;
             List<Categorie> cats = CategorieADO.GetListCategorie();
             TempDataHelper.Put<List<Categorie>>(TempData, "ListCategorie", cats);
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "SessionListCategorie", cats);
+            // var caty = SessionHelper.GetObjectFromJson<List<Categorie>>(HttpContext.Session, "SessionListCategorie");
+            // ViewBag.caty = caty;
 
             //  ViewData["Categorie"] = cats;
             //  TempData["ListCategorie"] = JsonConvert.SerializeObject(cats);

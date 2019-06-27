@@ -5,7 +5,13 @@
 @using IkeyPro.Helpers
 @using IkeyPro.Models
 @{
-    var Cats = TempDataHelper.Get<List<Categorie>>(TempData, "ListCategorie") as List<Categorie>;
+    var caty = SessionHelper.GetObjectFromJson<List<Categorie>>(Context.Session, "SessionListCategorie");
+}
+
+
+@foreach (var Categorie in caty)
+{
+    <a>@Categorie.IdCategorie, @Categorie.Categorie_Designation</a><br />
 }
 
 
