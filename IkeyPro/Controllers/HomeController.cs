@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 using IkeyPro.Models;
 using IkeyPro.ADO;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Session;
+
+using Newtonsoft.Json;
+using IkeyPro.Helpers;
 
 namespace IkeyPro.Controllers
 {
@@ -14,9 +18,19 @@ namespace IkeyPro.Controllers
     {
         public IActionResult Index()
         {
-            var cats = CategorieADO.GetListCategorie();
 
-            ViewData["Categorie"] = cats;
+
+            List<Categorie> cats = CategorieADO.GetListCategorie();
+            TempDataHelper.Put<List<Categorie>>(TempData, "ListCategorie", cats);
+
+            //  ViewData["Categorie"] = cats;
+            //  TempData["ListCategorie"] = JsonConvert.SerializeObject(cats);
+            // TempData.Add("ListCat", JsonConvert.SerializeObject(cats));
+
+            // HttpContext.Session.SetString("ListCats", JsonConvert.SerializeObject(cats));
+            // HttpContext.Items.Add("ListCat", cats);
+
+
 
 
             return View();

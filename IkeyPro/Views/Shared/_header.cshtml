@@ -1,5 +1,8 @@
-﻿@{
-
+﻿
+@using IkeyPro.Helpers
+@using IkeyPro.Models
+@{
+    var Cats = TempDataHelper.Get<List<Categorie>>(TempData, "ListCategorie") as List<Categorie>;
 }
 
 <header class="header">
@@ -151,66 +154,78 @@
                             <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
                                 <div class="cat_burger"><span></span><span></span><span></span></div>
                                 <div class="cat_menu_text">
-                                    <fmt:message key="Pcategories" /></ div >
-                                    </ div >
-                                    < ul class="cat_menu" id="cat"></ul>
-                                </div>
-                                <div class="main_nav_menu ml-auto">
-                                    <ul class="standard_dropdown main_nav_dropdown">
-                                        <li><a href="index.jsp">< fmt:message key = "PHome" />< i class="fas fa-chevron-down"></i></a></li>
-                                        <li class="hassubs">
-                                            <a href="#">< fmt:message key = "PLastChanse" />< i class="fas fa-chevron-down"></i></a>
-                                            <ul>
-                                                <c:forEach var="ligne" items="${ListeLastDispo}">
-                                                    <li>
-                                                        <a href="GererProduit?id=${ligne.codeProduit}">
-                                                            ${ligne.produit
-                                                            }<i class="fas fa-chevron-down"></i>
-                                                        </a>
-                                                    </li>
-                                                </c:forEach>
-                                            </ul>
-                                        </li>
-                                        <li class="hassubs">
-                                            <a href="#">< fmt:message key = "PEdition" />< i class="fas fa-chevron-down"></i></a>
-                                            <ul>
-                                                <c:forEach var="ligne" items="${ListeEdition}">
-                                                    <li><a href="ListeProduits?action=edition&edition=${ligne.id_Edition}">${ligne.edition}<i class="fas fa-chevron-down"></i></a> </li>
-                                                </c:forEach>
-                                            </ul>
-                                        </li>
-                                        <li class="hassubs">
-                                            <a href="#">< fmt:message key = "PFeaturedBrands" />< i class="fas fa-chevron-down"></i></a>
-                                            <ul>
-                                                <c:forEach var="ligne" items="${ListeEditeurs}">
-                                                    <li>
-                                                        <a href="ListeProduits?action=editeur&edit=${ligne.id_Editeur}">
-                                                            ${ligne.editeur}<i class="fas fa-chevron-down"></i>
-                                                        </a>
-                                                    </li>
-                                                </c:forEach>
-                                            </ul>
-                                        </li>
-                                        <li><a href="Affichage?action=blog"><fmt:message key="PBlog" /><i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="Affichage?action=contact"><fmt:message key="PContact" /><i class="fas fa-chevron-down"></i></a></li>
-                                    </ul>
+                                    Categorie
                                 </div>
 
-                                <!-- Menu Trigger -->
+                                <ul class="cat_menu">
+                                    @{
+                                        foreach (var c in Cats)
+                                        {
 
-                                <div class="menu_trigger_container ml-auto">
-                                    <div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
-                                        <div class="menu_burger">
-                                            <div class="menu_trigger_text">menu</div>
-                                            <div class="cat_burger menu_burger_inner"><span></span><span></span><span></span></div>
-                                        </div>
+                                            <li><a href="ListeProduits?action=categorie&cat=@c.IdCategorie "> @c.Categorie_Designation <i class="fas fa-chevron-right"></i></a></li>
+
+                                        }
+
+                                    }
+
+                                </ul>
+                            </div>
+                            <div class="main_nav_menu ml-auto">
+                                <ul class="standard_dropdown main_nav_dropdown">
+                                    <li><a href="index.jsp">< fmt:message key = "PHome" />< i class="fas fa-chevron-down"></i></a></li>
+                                    <li class="hassubs">
+                                        <a href="#">< fmt:message key = "PLastChanse" />< i class="fas fa-chevron-down"></i></a>
+                                        <ul>
+                                            <c:forEach var="ligne" items="${ListeLastDispo}">
+                                                <li>
+                                                    <a href="GererProduit?id=${ligne.codeProduit}">
+                                                        ${ligne.produit
+                                                        }<i class="fas fa-chevron-down"></i>
+                                                    </a>
+                                                </li>
+                                            </c:forEach>
+                                        </ul>
+                                    </li>
+                                    <li class="hassubs">
+                                        <a href="#">< fmt:message key = "PEdition" />< i class="fas fa-chevron-down"></i></a>
+                                        <ul>
+                                            <c:forEach var="ligne" items="${ListeEdition}">
+                                                <li><a href="ListeProduits?action=edition&edition=${ligne.id_Edition}">${ligne.edition}<i class="fas fa-chevron-down"></i></a> </li>
+                                            </c:forEach>
+                                        </ul>
+                                    </li>
+                                    <li class="hassubs">
+                                        <a href="#">< fmt:message key = "PFeaturedBrands" />< i class="fas fa-chevron-down"></i></a>
+                                        <ul>
+                                            <c:forEach var="ligne" items="${ListeEditeurs}">
+                                                <li>
+                                                    <a href="ListeProduits?action=editeur&edit=${ligne.id_Editeur}">
+                                                        ${ligne.editeur}<i class="fas fa-chevron-down"></i>
+                                                    </a>
+                                                </li>
+                                            </c:forEach>
+                                        </ul>
+                                    </li>
+                                    <li><a href="Affichage?action=blog"><fmt:message key="PBlog" /><i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a href="Affichage?action=contact"><fmt:message key="PContact" /><i class="fas fa-chevron-down"></i></a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Menu Trigger -->
+
+                            <div class="menu_trigger_container ml-auto">
+                                <div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
+                                    <div class="menu_burger">
+                                        <div class="menu_trigger_text">menu</div>
+                                        <div class="cat_burger menu_burger_inner"><span></span><span></span><span></span></div>
                                     </div>
                                 </div>
-
                             </div>
+
                         </div>
                     </div>
                 </div>
+            </div>
     </nav>
 
     <!-- Menu -->

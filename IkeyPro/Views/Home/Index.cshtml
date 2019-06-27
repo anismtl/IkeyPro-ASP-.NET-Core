@@ -1,5 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+
+}
+@using IkeyPro.Helpers
+@using IkeyPro.Models
+@{
+    var Cats = TempDataHelper.Get<List<Categorie>>(TempData, "ListCategorie") as List<Categorie>;
 }
 
 

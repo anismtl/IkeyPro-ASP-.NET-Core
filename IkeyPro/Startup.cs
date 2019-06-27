@@ -29,9 +29,20 @@ namespace IkeyPro
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".AdventureWorks.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+            });
+
+            services.AddMvc().
+                SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                 .AddSessionStateTempDataProvider();
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,8 +58,10 @@ namespace IkeyPro
             }
 
             app.UseStaticFiles();
+            // example middleware that does not reference session at all and is configured before app.UseSession()
             app.UseSession();
             app.UseCookiePolicy();
+
 
             app.UseMvc(routes =>
             {
