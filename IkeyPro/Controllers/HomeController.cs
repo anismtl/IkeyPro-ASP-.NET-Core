@@ -21,9 +21,14 @@ namespace IkeyPro.Controllers
 
             // var cats = SessionHelper.GetObjectFromJson<List<Categorie>>(HttpContext.Session, "SessionListCategorie");
             // ViewBag.cart = cats;
-            List<Categorie> cats = CategorieADO.GetListCategorie();
-            TempDataHelper.Put<List<Categorie>>(TempData, "ListCategorie", cats);
-            SessionHelper.SetObjectAsJson(HttpContext.Session, "SessionListCategorie", cats);
+            List<Categorie> ListeCategories = CategorieADO.GetListCategorie();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "SessionListCategorie", ListeCategories);
+
+            List<Editeur> ListeEditeurs1 = EditeurADO.GetListeEditeur();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeEditeurs", ListeEditeurs1);
+
+
+            //TempDataHelper.Put<List<Categorie>>(TempData, "ListCategorie", cats);
             // var caty = SessionHelper.GetObjectFromJson<List<Categorie>>(HttpContext.Session, "SessionListCategorie");
             // ViewBag.caty = caty;
 

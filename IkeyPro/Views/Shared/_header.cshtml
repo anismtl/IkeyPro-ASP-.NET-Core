@@ -2,7 +2,9 @@
 @using IkeyPro.Helpers
 @using IkeyPro.Models
 @{
-    var Cats = TempDataHelper.Get<List<Categorie>>(TempData, "ListCategorie") as List<Categorie>;
+
+    var Cats = SessionHelper.GetObjectFromJson<List<Categorie>>(Context.Session, "SessionListCategorie");
+    var ListeEditeurs = SessionHelper.GetObjectFromJson<List<Editeur>>(Context.Session, "ListeEditeurs");
 }
 
 <header class="header">
@@ -105,37 +107,19 @@
                                     <img src="images/cart.png" alt="">
                                     <div class="cart_count">
                                         <span>
-                                            <c:if test="${empty panier}">0</c:if>
-                                            <c:if test="${!empty panier}">${panier.size()}</c:if>
+                                            0
                                         </span>
                                     </div>
                                 </div>
                                 <div class="cart_content">
                                     <div class="cart_text">
-                                        <a href="<c:if test="${empty panier}">
-                                            #</c:if>
-                                            <c:if test="${!empty panier}">Panier?action=AFFICHER</c:if>">
-                                            < fmt:message key = "PCart" />
+                                        <a href="#">  <fmt:message key="PCart" /></a>
 
+                                    </div>
 
+                                    <div class="cart_price">
+                                        0$
 
-
-                                            </ a >
-
-
-
-
-                                            </ div >
-
-
-
-
-                                            < div class="cart_price">
-                                            <c:if test="${empty total}">0$</c:if>
-                                            <c:if test="${!empty total}">
-                                                ${total
-                                                }$
-                                            </c:if>
                                     </div>
                                 </div>
                             </div>
@@ -172,9 +156,9 @@
                             </div>
                             <div class="main_nav_menu ml-auto">
                                 <ul class="standard_dropdown main_nav_dropdown">
-                                    <li><a href="index.jsp">< fmt:message key = "PHome" />< i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a href="index.jsp">Accueil<i class="fas fa-chevron-down"></i></a></li>
                                     <li class="hassubs">
-                                        <a href="#">< fmt:message key = "PLastChanse" />< i class="fas fa-chevron-down"></i></a>
+                                        <a href="#">Derniere chance<i class="fas fa-chevron-down"></i></a>
                                         <ul>
                                             <c:forEach var="ligne" items="${ListeLastDispo}">
                                                 <li>
@@ -187,27 +171,30 @@
                                         </ul>
                                     </li>
                                     <li class="hassubs">
-                                        <a href="#">< fmt:message key = "PEdition" />< i class="fas fa-chevron-down"></i></a>
+                                        <a href="#">Edition <i class="fas fa-chevron-down"></i></a>
                                         <ul>
                                             <c:forEach var="ligne" items="${ListeEdition}">
                                                 <li><a href="ListeProduits?action=edition&edition=${ligne.id_Edition}">${ligne.edition}<i class="fas fa-chevron-down"></i></a> </li>
                                             </c:forEach>
+
                                         </ul>
                                     </li>
                                     <li class="hassubs">
-                                        <a href="#">< fmt:message key = "PFeaturedBrands" />< i class="fas fa-chevron-down"></i></a>
+                                        <a href="#">Meilleurs Editeurs<i class="fas fa-chevron-down"></i></a>
                                         <ul>
-                                            <c:forEach var="ligne" items="${ListeEditeurs}">
+                                            @foreach (var editeur in ListeEditeurs)
+                                            {
                                                 <li>
-                                                    <a href="ListeProduits?action=editeur&edit=${ligne.id_Editeur}">
-                                                        ${ligne.editeur}<i class="fas fa-chevron-down"></i>
+                                                    <a href="ListeProduits?action=editeur&edit=@editeur.Id_Editeur ">
+                                                        @editeur.Editeur_Designation1<i class="fas fa-chevron-down"></i>
+
                                                     </a>
                                                 </li>
-                                            </c:forEach>
+                                            }
                                         </ul>
                                     </li>
-                                    <li><a href="Affichage?action=blog"><fmt:message key="PBlog" /><i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="Affichage?action=contact"><fmt:message key="PContact" /><i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a href="Affichage?action=blog">Blog<i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a href="Affichage?action=contact">Contactez-nous<i class="fas fa-chevron-down"></i></a></li>
                                 </ul>
                             </div>
 
@@ -226,6 +213,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </nav>
 
     <!-- Menu -->
@@ -244,20 +232,20 @@
                         </div>
                         <ul class="page_menu_nav">
                             <li class="page_menu_item has-children">
-                                <a href="#"><fmt:message key="PLanguage" /><i class="fa fa-angle-down"></i></a>
+                                <a href="#">Langue<i class="fa fa-angle-down"></i></a>
                                 <ul class="page_menu_selection">
-                                    <li><a href="#"><fmt:message key="PEnglishLangue" /><i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#"><fmt:message key="PEspagnolLangue" /><i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#"><fmt:message key="PFrancaisLangue" /><i class="fa fa-angle-down"></i></a></li>
+                                    <li><a href="#">Anglais<i class="fa fa-angle-down"></i></a></li>
+                                    <li><a href="#">Espagnol<i class="fa fa-angle-down"></i></a></li>
+                                    <li><a href="#">Francais<i class="fa fa-angle-down"></i></a></li>
                                 </ul>
                             </li>
                             <li class="page_menu_item">
                                 <a href="#">Home<i class="fa fa-angle-down"></i></a>
                             </li>
                             <li class="page_menu_item has-children">
-                                <a href="#"><fmt:message key="PSuperDeals" /><i class="fa fa-angle-down"></i></a>
+                                <a href="#">Mega Rabais<i class="fa fa-angle-down"></i></a>
                                 <ul class="page_menu_selection">
-                                    <li><a href="#"><fmt:message key="PSuperDeals" /><i class="fa fa-angle-down"></i></a></li>
+                                    <li><a href="#">Mega Rabais<i class="fa fa-angle-down"></i></a></li>
                                     <li class="page_menu_item has-children">
                                         <a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
                                         <ul class="page_menu_selection">
@@ -273,25 +261,25 @@
                                 </ul>
                             </li>
                             <li class="page_menu_item has-children">
-                                <a href="#"><fmt:message key="PSuperDeals" /><i class="fa fa-angle-down"></i></a>
+                                <a href="#">Mega Rabais<i class="fa fa-angle-down"></i></a>
                                 <ul class="page_menu_selection">
-                                    <li><a href="#"><fmt:message key="PSuperDeals" /><i class="fa fa-angle-down"></i></a></li>
+                                    <li><a href="#">Mega Rabais<i class="fa fa-angle-down"></i></a></li>
                                     <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
                                     <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
                                     <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
                                 </ul>
                             </li>
                             <li class="page_menu_item has-children">
-                                <a href="#"><fmt:message key="PTrendingStyles" /><i class="fa fa-angle-down"></i></a>
+                                <a href="#">Styles de tendance<i class="fa fa-angle-down"></i></a>
                                 <ul class="page_menu_selection">
-                                    <li><a href="#"><fmt:message key="PTrendingStyles" /><i class="fa fa-angle-down"></i></a></li>
+                                    <li><a href="#">Styles de tendance<i class="fa fa-angle-down"></i></a></li>
                                     <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
                                     <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
                                     <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
                                 </ul>
                             </li>
-                            <li class="page_menu_item"><a href="blog.jsp"><fmt:message key="PBlog" /><i class="fa fa-angle-down"></i></a></li>
-                            <li class="page_menu_item"><a href="contact.jsp"><fmt:message key="PContact" /><i class="fa fa-angle-down"></i></a></li>
+                            <li class="page_menu_item"><a href="blog.jsp">Blog<i class="fa fa-angle-down"></i></a></li>
+                            <li class="page_menu_item"><a href="contact.jsp">Contactez-nous<i class="fa fa-angle-down"></i></a></li>
                         </ul>
 
                         <div class="menu_contact">
@@ -303,5 +291,6 @@
             </div>
         </div>
     </div>
+
 </header>
 

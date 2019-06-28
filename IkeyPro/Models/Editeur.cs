@@ -18,7 +18,7 @@ namespace IkeyPro.Models
         public Editeur(string id_Editeur, string Editeur)
         {
             this.id_Editeur = id_Editeur;
-            this.Editeur_Designation = Editeur;
+            this.Editeur_Designation1 = Editeur;
         }
 
         public virtual string Id_Editeur
@@ -33,15 +33,6 @@ namespace IkeyPro.Models
             }
         }
 
-
-        public virtual string getEditeur()
-        {
-            return Editeur_Designation;
-        }
-
-        public virtual void setEditeur(string Editeur)
-        {
-            this.Editeur_Designation = Editeur;
-        }
+        public string Editeur_Designation1 { get => Editeur_Designation; set => Editeur_Designation = value; }
     }
 }
