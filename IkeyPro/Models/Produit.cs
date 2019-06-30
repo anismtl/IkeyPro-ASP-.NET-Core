@@ -11,7 +11,7 @@ namespace IkeyPro.Models
         private string categorie;
         private string editeur;
         private string edition;
-        private string produit;
+        private string designtion_produit;
         private string plateforme;
         private string dateRelease;
         private double prix;
@@ -27,7 +27,7 @@ namespace IkeyPro.Models
         public Produit(string codeProduit, string produit, double prix, string image, int nbconsulte)
         {
             this.codeProduit = codeProduit;
-            this.produit = produit;
+            this.Designtion_produit = produit;
             this.prix = prix;
             this.image = image;
             this.nbconsulte = nbconsulte;
@@ -39,7 +39,7 @@ namespace IkeyPro.Models
             this.categorie = categorie;
             this.editeur = editeur;
             this.edition = edition;
-            this.produit = produit;
+            this.Designtion_produit = produit;
             this.plateforme = plateforme;
             this.dateRelease = dateRelease;
             this.prix = prix;
@@ -101,15 +101,7 @@ namespace IkeyPro.Models
         }
 
 
-        public virtual string getProduit()
-        {
-            return produit;
-        }
 
-        public virtual void setProduit(string produit)
-        {
-            this.produit = produit;
-        }
 
         public virtual string Plateforme
         {
@@ -201,6 +193,7 @@ namespace IkeyPro.Models
             }
         }
 
+        public string Designtion_produit { get => designtion_produit; set => designtion_produit = value; }
     }
 
 }

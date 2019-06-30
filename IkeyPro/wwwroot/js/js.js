@@ -30,12 +30,12 @@ function getMostViewProduitList() {
 
             reponseJSON = this.responseText;
             liste = JSON.parse(reponseJSON);
-            
+
             s = '<div class="owl-carousel owl-theme viewed_slider" >';
-           
+
             for (i = 0; i < liste.length; i++) {
 
-                var v = $('<div class="col-md-2 owl-item"><div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center"><div class="viewed_image"><img src="images/' + liste[i].image + '" alt=""></div><div class="viewed_content text-center"><div class="viewed_price">$' + liste[i].prix + '</div><div class="viewed_name"><a href="GererProduit?id=' + liste[i].codeProduit + '">' + liste[i].produit + '</a></div></div><ul class="item_marks"><li class="item_mark item_discount">-25%</li><li class="item_mark item_new">new</li></ul></div></div>');
+                var v = $('<div class="col-md-2 owl-item"><div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center"><div class="viewed_image"><img src="images/' + liste[i].image + '" alt=""></div><div class="viewed_content text-center"><div class="viewed_price">$' + liste[i].prix + '</div><div class="viewed_name"><a href="GererProduit?id=' + liste[i].codeProduit + '">' + liste[i].designtion_produit + '</a></div></div><ul class="item_marks"><li class="item_mark item_discount">-25%</li><li class="item_mark item_new">new</li></ul></div></div>');
                 v.appendTo('#des');
             }
 
@@ -43,7 +43,7 @@ function getMostViewProduitList() {
             alert("Erreur AJAX");
         }
     }
-    xhr.open("GET", "Ajax?action=Produits", true);
+    xhr.open("GET", "Home/MostViewed", true);
     xhr.send();
 }
 
@@ -70,7 +70,7 @@ function getCategoriesList() {
             alert("Erreur AJAX");
         }
     }
-    xhr.open("GET", "Ajax?action=Categories", true);
+    xhr.open("GET", "Home/Cat", true);
     xhr.send();
 }
 
@@ -99,4 +99,3 @@ function port_List() {
     xhr.send();
 }
 
-        

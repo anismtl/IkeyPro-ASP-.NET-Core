@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IkeyPro.ADO
 {
-    public class CategorieADO
+    public class CategorieDAO
     {
 
         public static List<Categorie> GetListCategorie()
@@ -27,7 +27,7 @@ namespace IkeyPro.ADO
             {
                 Categorie item = new Categorie()
                 {
-                    //Id_activite = int.Parse(reader["Id_activite"].ToString()),
+
                     IdCategorie = reader["ID_CATEGORIE"].ToString(),
                     Categorie_Designation = reader["CATEGORIE"].ToString()
 

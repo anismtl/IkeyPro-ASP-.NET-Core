@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IkeyPro.ADO
 {
-    public class EditeurADO
+    public class EditeurDAO
     {
         public static List<Editeur> GetListeEditeur()
         {

@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Session;
 
 using Newtonsoft.Json;
 using IkeyPro.Helpers;
+using IkeyPro.DAO;
 
 namespace IkeyPro.Controllers
 {
@@ -21,11 +22,16 @@ namespace IkeyPro.Controllers
 
             // var cats = SessionHelper.GetObjectFromJson<List<Categorie>>(HttpContext.Session, "SessionListCategorie");
             // ViewBag.cart = cats;
-            List<Categorie> ListeCategories = CategorieADO.GetListCategorie();
+            List<Categorie> ListeCategories = CategorieDAO.GetListCategorie();
             SessionHelper.SetObjectAsJson(HttpContext.Session, "SessionListCategorie", ListeCategories);
 
-            List<Editeur> ListeEditeurs1 = EditeurADO.GetListeEditeur();
+            List<Editeur> ListeEditeurs1 = EditeurDAO.GetListeEditeur();
             SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeEditeurs", ListeEditeurs1);
+
+            List<Produit> ListMostViwedProduit = ProduitDAO.GetListeMostViwedProduit();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "ListMostViwedProduit", ListMostViwedProduit);
+
+            // List<Produit> ListMostViwedProduit = ProduitDAO.GetListeMostViwedProduit();
 
 
             //TempDataHelper.Put<List<Categorie>>(TempData, "ListCategorie", cats);
@@ -43,6 +49,18 @@ namespace IkeyPro.Controllers
 
 
             return View();
+        }
+
+        public IActionResult Cat()
+        {
+            List<Categorie> ListeCategories = SessionHelper.GetObjectFromJson<List<Categorie>>(HttpContext.Session, "SessionListCategorie");
+            return new JsonResult(ListeCategories);
+        }
+
+        public IActionResult MostViewed()
+        {
+            List<Produit> ListMostViwedProduit = SessionHelper.GetObjectFromJson<List<Produit>>(HttpContext.Session, "ListMostViwedProduit");
+            return new JsonResult(ListMostViwedProduit);
         }
 
 
