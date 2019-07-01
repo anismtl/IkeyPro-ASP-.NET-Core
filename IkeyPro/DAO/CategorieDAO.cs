@@ -12,17 +12,21 @@ namespace IkeyPro.ADO
 
         public static List<Categorie> GetListCategorie()
         {
-            //string chaine = "Data Source=aniss.ca;Initial Catalog=intraDB;Persist Security Info=True;User ID=anis;Password=SAM123";
-            SqlConnection sqlConnection1 = DataManager.Get();
-            SqlCommand cmd = new SqlCommand();
-            SqlDataReader reader;
-            cmd.CommandText = "getListCategorie";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Connection = sqlConnection1;
-            sqlConnection1.Open();
-            reader = cmd.ExecuteReader();
+            SqlConnection sqlConnection = DataManager.Get();
+
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandText = "GetListCategorie",
+                CommandType = System.Data.CommandType.StoredProcedure,
+                Connection = sqlConnection
+            };
+
+            sqlConnection.Open();
+
+            SqlDataReader reader = cmd.ExecuteReader();
 
             List<Categorie> result = new List<Categorie>();
+
             while (reader.Read())
             {
                 Categorie item = new Categorie()
@@ -30,14 +34,62 @@ namespace IkeyPro.ADO
 
                     IdCategorie = reader["ID_CATEGORIE"].ToString(),
                     Categorie_Designation = reader["CATEGORIE"].ToString()
-
-
                 };
 
                 result.Add(item);
             }
-            sqlConnection1.Close();
+
+            sqlConnection.Close();
             return result;
+            /* 
+            CREATE PROCEDURE [dbo].[GetListCategorie]
+            AS
+	            SELECT ID_CATEGORIE, CATEGORIE 
+	            FROM CATEGORIE
+	            ORDER BY CATEGORIE DESC;
+            RETURN 0;
+            */
+        }
+
+        public static string GetCategorie(string id)
+        {
+            SqlConnection sqlConnection = DataManager.Get();
+
+            SqlCommand cmd = new SqlCommand {            
+                CommandText = "GetCategorieById",
+                CommandType = System.Data.CommandType.StoredProcedure,
+                Connection = sqlConnection
+            };
+
+            sqlConnection.Open();
+
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id", id));
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            string result = null;
+
+            while (reader.Read())
+            {
+                result = reader["CATEGORIE"].ToString();
+            }
+
+
+            sqlConnection.Close();
+            return result;
+
+            /* 
+            CREATE PROCEDURE [dbo].[GetCategorieById]
+            @id int
+            AS
+	            SELECT CATEGORIE 
+	            FROM CATEGORIE
+                WHERE ID_CATEGORIE =:@id
+	            ORDER BY CATEGORIE DESC;
+            RETURN 0;
+            */
         }
     }
 }
+
