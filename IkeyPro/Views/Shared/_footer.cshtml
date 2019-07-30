@@ -1,6 +1,11 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using IkeyPro.Helpers
+@using IkeyPro.Models
+@{
+
+    var Cats = SessionHelper.GetObjectFromJson<List<Categorie>>(Context.Session, "SessionListCategorie");
+    var ListeEditeurs = SessionHelper.GetObjectFromJson<List<Editeur>>(Context.Session, "ListeEditeurs");
+
+}
 
 <footer class="footer">
     <div class="container">
@@ -9,13 +14,13 @@
             <div class="col-lg-3 footer_col">
                 <div class="footer_column footer_contact">
                     <div class="logo_container">
-                        <div class="logo"><a href="#">OneTech</a></div>
+                        <div class="logo"><a href="index.jsp">IkeyPro</a></div>
                     </div>
-                    <div class="footer_title">Got Question? Call Us 24/7</div>
-                    <div class="footer_phone">+38 068 005 3570</div>
+                    <div class="footer_title">@Localizer["PGotQuestion"]</div>
+                    <div class="footer_phone">+1 514 000 0000</div>
                     <div class="footer_contact_text">
                         <p>17 Princess Road, London</p>
-                        <p>Grester London NW18JR, UK</p>
+                        <p>Montreal NW18JR, QC</p>
                     </div>
                     <div class="footer_social">
                         <ul>
@@ -31,38 +36,50 @@
 
             <div class="col-lg-2 offset-lg-2">
                 <div class="footer_column">
-                    <div class="footer_title">Find it Fast</div>
+                    <div class="footer_title">@Localizer["PFindItFast"]</div>
                     <ul class="footer_list">
-                        <li><a href="#">Computers & Laptops</a></li>
-                        <li><a href="#">Cameras & Photos</a></li>
-                        <li><a href="#">Hardware</a></li>
-                        <li><a href="#">Smartphones & Tablets</a></li>
-                        <li><a href="#">TV & Audio</a></li>
+
+
+
+
+
+                
+                        @foreach (var categorie in Cats)
+                        {
+
+                           
+                            <li><a class="clc" href="ListeProduits?action=categorie&cat=@categorie.IdCategorie">@categorie.Categorie_Designation</a></li>
+
+                        }
+
                     </ul>
-                    <div class="footer_subtitle">Gadgets</div>
+                </div>
+
+
+            </div>
+
+            <div class="col-lg-2">
+                <div class="footer_column">
+                    <div class="footer_title">@Localizer["PFeaturedBrands"]</div>
                     <ul class="footer_list">
-                        <li><a href="#">Car Electronics</a></li>
+  
+                        @foreach (var editeur in ListeEditeurs)
+                        {
+
+                            <li><a class="clc" href="ListeProduits?action=editeur&edit=@editeur.Id_Editeur">@editeur.Editeur_Designation</a></li>
+               
+                        }
+
+
                     </ul>
                 </div>
             </div>
 
             <div class="col-lg-2">
                 <div class="footer_column">
-                    <ul class="footer_list footer_list_2">
-                        <li><a href="#">Video Games & Consoles</a></li>
-                        <li><a href="#">Accessories</a></li>
-                        <li><a href="#">Cameras & Photos</a></li>
-                        <li><a href="#">Hardware</a></li>
-                        <li><a href="#">Computers & Laptops</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-lg-2">
-                <div class="footer_column">
-                    <div class="footer_title">Customer Care</div>
+                    <div class="footer_title">@Localizer["PCustomerCare"]</div>
                     <ul class="footer_list">
-                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">@Localizer["PMyAccount"]</a></li>
                         <li><a href="#">Order Tracking</a></li>
                         <li><a href="#">Wish List</a></li>
                         <li><a href="#">Customer Services</a></li>
@@ -76,3 +93,33 @@
         </div>
     </div>
 </footer>
+
+<!-- Copyright -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+                <div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
+                    <div class="copyright_content">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true" style="color:red"></i> by <a href="https://www.linkedin.com/in/anis-boutekadjiret/" target="_blank">Anis Boutekadjiret </a>, <a href="https://www.linkedin.com/in/judithadame/" target="_blank">Judith Adame-Aragon </a> and <a href="https://colorlib.com" target="_blank">Colorlib</a>.
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </div>
+                    <div class="logos ml-sm-auto">
+                        <ul class="logos_list">
+                            <li><a href="#"><img src="images/logos_1.png" alt=""></a></li>
+                            <li><a href="#"><img src="images/logos_2.png" alt=""></a></li>
+                            <li><a href="#"><img src="images/logos_3.png" alt=""></a></li>
+                            <li><a href="#"><img src="images/logos_4.png" alt=""></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
