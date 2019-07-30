@@ -34,6 +34,9 @@ namespace IkeyPro.Controllers
             List<Produit> ListMostViwedProduit = ProduitDAO.GetListeMostViewedProduit();
             SessionHelper.SetObjectAsJson(HttpContext.Session, "ListMostViwedProduit", ListMostViwedProduit);
 
+            List<Produit> ListeLastDispo = ProduitDAO.GetListeFullProduitByDispo();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeLastDispo", ListeLastDispo);
+
             // List<Produit> ListMostViwedProduit = ProduitDAO.GetListeMostViwedProduit();
 
 

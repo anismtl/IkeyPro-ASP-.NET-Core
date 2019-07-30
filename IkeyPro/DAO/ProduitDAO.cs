@@ -689,7 +689,7 @@ namespace IkeyPro.DAO
 	            SELECT P.CODE_PRODUIT,  P.PRODUIT,   P.DATE_RELEASE, P.PRIX, 
                       P.PLATEFORME,     EUR.EDITEUR, ID_EDITEUR,     EON.EDITION,
                       ID_EDITION,       P.LANGUE,    P.IMAGE,        P.DISPONIBILITE, P.NBCONSULT
-	            FROM PRODUITS P
+	            FROM PRODUIT P
                 INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR 
                 INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION 
                 WHERE P.DISPONIBILITE = 1;
@@ -700,7 +700,7 @@ namespace IkeyPro.DAO
             SqlConnection sqlConnection = DataManager.Get();
             SqlCommand cmd = new SqlCommand
             {
-                CommandText = "GetListeFullProduitByDispo",
+                CommandText = "GetGetProduit",
                 CommandType = System.Data.CommandType.StoredProcedure,
                 Connection = sqlConnection
             };

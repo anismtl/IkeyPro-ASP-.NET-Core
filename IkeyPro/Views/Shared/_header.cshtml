@@ -4,6 +4,8 @@
 
     var Cats = SessionHelper.GetObjectFromJson<List<Categorie>>(Context.Session, "SessionListCategorie");
     var ListeEditeurs = SessionHelper.GetObjectFromJson<List<Editeur>>(Context.Session, "ListeEditeurs");
+    var ListeEditions = SessionHelper.GetObjectFromJson<List<Edition>>(Context.Session, "ListeEditions");
+    var ListeLastDispo = SessionHelper.GetObjectFromJson<List<Produit>>(Context.Session, "ListeLastDispo");
 }
 
 <header class="header">
@@ -136,33 +138,31 @@
                                 <li class="hassubs">
                                     <a href="#">Derniere Chance<i class="fas fa-chevron-down"></i></a>
                                     <ul>
-                                        <li>
-                                            <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                            <ul>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                        @foreach (var produit in ListeLastDispo)
+                                        {
+                                            <li>
+                                                <a href="ListeProduits?action=editeur&edit=@produit.CodeProduit ">
+                                                    @produit.Designtion_produit<i class="fas fa-chevron-down"></i>
+                                                </a>
+                                            </li>
+                                        }
+
+
                                     </ul>
                                 </li>
                                 <li class="hassubs">
                                     <a href="#">Edition<i class="fas fa-chevron-down"></i></a>
                                     <ul>
-                                        <li>
-                                            <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                            <ul>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
+                                        @foreach (var edition in ListeEditions)
+                                        {
+                                            <li>
+                                                <a href="ListeProduits?action=editeur&edit=@edition.Id_Edition ">
+                                                    @edition.Edition_Designation<i class="fas fa-chevron-down"></i>
+                                                </a>
+                                            </li>
+                                        }
+
+
                                     </ul>
                                 </li>
                                 <li class="hassubs">
