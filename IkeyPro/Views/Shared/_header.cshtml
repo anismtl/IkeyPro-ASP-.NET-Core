@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row">
                 <div class="col d-flex flex-row">
-                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/phone.png" alt=""></div>+38 068 005 3570</div>
+                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/phone.png" alt=""></div>+514 000 0000</div>
                     <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
                     <div class="top_bar_content ml-auto">
                         <div class="top_bar_menu">
@@ -25,14 +25,6 @@
                                         <li><a href="#">Italian</a></li>
                                         <li><a href="#">Spanish</a></li>
                                         <li><a href="#">Japanese</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
-                                    <ul>
-                                        <li><a href="#">EUR Euro</a></li>
-                                        <li><a href="#">GBP British Pound</a></li>
-                                        <li><a href="#">JPY Japanese Yen</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -92,13 +84,7 @@
                 <!-- Wishlist -->
                 <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
                     <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
-                        <div class="wishlist d-flex flex-row align-items-center justify-content-end">
-                            <div class="wishlist_icon"><img src="images/heart.png" alt=""></div>
-                            <div class="wishlist_content">
-                                <div class="wishlist_text"><a href="#">Wishlist</a></div>
-                                <div class="wishlist_count">115</div>
-                            </div>
-                        </div>
+                     
 
                         <!-- Cart -->
                         <div class="cart">
@@ -136,32 +122,9 @@
                                 <div class="cat_menu_text">categories</div>
                             </div>
 
-                            <ul class="cat_menu">
-                                <li><a href="#">Computers & Laptops <i class="fas fa-chevron-right ml-auto"></i></a></li>
-                                <li><a href="#">Cameras & Photos<i class="fas fa-chevron-right"></i></a></li>
-                                <li class="hassubs">
-                                    <a href="#">Hardware<i class="fas fa-chevron-right"></i></a>
-                                    <ul>
-                                        <li class="hassubs">
-                                            <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-                                            <ul>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Smartphones & Tablets<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">TV & Audio<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">Gadgets<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">Car Electronics<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">Video Games & Consoles<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="#">Accessories<i class="fas fa-chevron-right"></i></a></li>
+                            <ul id="cat" class="cat_menu">
+                            
+                           
                             </ul>
                         </div>
 
@@ -171,7 +134,7 @@
                             <ul class="standard_dropdown main_nav_dropdown">
                                 <li><a href="#">Home<i class="fas fa-chevron-down"></i></a></li>
                                 <li class="hassubs">
-                                    <a href="#">Super Deals<i class="fas fa-chevron-down"></i></a>
+                                    <a href="#">Derniere Chance<i class="fas fa-chevron-down"></i></a>
                                     <ul>
                                         <li>
                                             <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
@@ -187,7 +150,7 @@
                                     </ul>
                                 </li>
                                 <li class="hassubs">
-                                    <a href="#">Featured Brands<i class="fas fa-chevron-down"></i></a>
+                                    <a href="#">Edition<i class="fas fa-chevron-down"></i></a>
                                     <ul>
                                         <li>
                                             <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
@@ -203,16 +166,19 @@
                                     </ul>
                                 </li>
                                 <li class="hassubs">
-                                    <a href="#">Pages<i class="fas fa-chevron-down"></i></a>
-                                    <ul>
-                                        <li><a href="shop.html">Shop<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="product.html">Product<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="blog_single.html">Blog Post<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="regular.html">Regular Post<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="cart.html">Cart<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
-                                    </ul>
+                                    <a href="#">Meilleurs Editeurs<i class="fas fa-chevron-down"></i></a>
+                                    
+                                        <ul>
+                                            @foreach (var editeur in ListeEditeurs)
+                                            {
+                                                <li>
+                                                    <a href="ListeProduits?action=editeur&edit=@editeur.Id_Editeur ">
+                                                        @editeur.Editeur_Designation<i class="fas fa-chevron-down"></i>
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+                                   
                                 </li>
                                 <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
                                 <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>

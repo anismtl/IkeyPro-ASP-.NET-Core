@@ -60,7 +60,7 @@ function getCategoriesList() {
             liste = JSON.parse(reponseJSON);
 
             for (i = 0; i < liste.length; i++) {
-                s = $('<li><a href="ListeProduits?action=categorie&cat=' + liste[i].idCategorie + '"> ' + liste[i].categorie + ' <i class="fas fa-chevron-right"></i></a></li>');
+                s = $('<li><a href="ListeProduits?action=categorie&cat=' + liste[i].idCategorie + '"> ' + liste[i].categorie_Designation + ' <i class="fas fa-chevron-right"></i></a></li>');
                 s.appendTo('#cat');
             }
 

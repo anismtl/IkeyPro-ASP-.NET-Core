@@ -28,6 +28,9 @@ namespace IkeyPro.Controllers
             List<Editeur> ListeEditeurs1 = EditeurDAO.GetListeEditeur();
             SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeEditeurs", ListeEditeurs1);
 
+            List<Edition> ListeEditions = EditionDAO.GetListeEditeur();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeEditions", ListeEditions);
+
             List<Produit> ListMostViwedProduit = ProduitDAO.GetListeMostViewedProduit();
             SessionHelper.SetObjectAsJson(HttpContext.Session, "ListMostViwedProduit", ListMostViwedProduit);
 
