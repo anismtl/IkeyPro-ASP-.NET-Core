@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Views\Home\Index.cshtml.old" />
+    <Content Include="Views\Home\IndexOLD.cshtml.old" />
   </ItemGroup>
 
 

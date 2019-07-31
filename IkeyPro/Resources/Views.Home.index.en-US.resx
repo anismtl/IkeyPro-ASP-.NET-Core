@@ -117,6 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="PAddToCart" xml:space="preserve">
+    <value>Add to Cart</value>
+  </data>
+  <data name="PExplorre" xml:space="preserve">
+    <value>Explore</value>
+  </data>
+  <data name="PFreeDelivery" xml:space="preserve">
+    <value>Free Delivery</value>
+  </data>
+  <data name="PFrom" xml:space="preserve">
+    <value>From 50$</value>
+  </data>
+  <data name="PHotNewArrivals" xml:space="preserve">
+    <value>Hot New Arrivals</value>
+  </data>
+  <data name="PLastVisit" xml:space="preserve">
+    <value>Viewed</value>
+  </data>
+  <data name="PMostViewed" xml:space="preserve">
+    <value>Most Viewed</value>
+  </data>
+  <data name="PNew" xml:space="preserve">
+    <value>new</value>
+  </data>
+  <data name="PRechecheCookies" xml:space="preserve">
+    <value>Products you searched during your last visit</value>
+  </data>
+  <data name="PShopNow" xml:space="preserve">
+    <value>Shop Now</value>
+  </data>
   <data name="PSlogan" xml:space="preserve">
     <value>new era of Operating Systems</value>
   </data>

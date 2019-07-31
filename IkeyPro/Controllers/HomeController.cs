@@ -37,6 +37,15 @@ namespace IkeyPro.Controllers
             List<Produit> ListeLastDispo = ProduitDAO.GetListeFullProduitByDispo();
             SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeLastDispo", ListeLastDispo);
 
+            Produit ProduitVedette = ProduitDAO.GetProduitVedette();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "ProduitVedette", ProduitVedette);
+
+            List<Produit> ListeProduitByPub = ProduitDAO.GetListeFullProduitByPublicite();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeProduitByPub", ListeProduitByPub);
+
+            List<Produit> ListeAllProduits = ProduitDAO.GetListeDesProduits();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeAllProduits", ListeAllProduits);
+
             // List<Produit> ListMostViwedProduit = ProduitDAO.GetListeMostViwedProduit();
 
 
@@ -68,6 +77,9 @@ namespace IkeyPro.Controllers
             List<Produit> ListMostViwedProduit = SessionHelper.GetObjectFromJson<List<Produit>>(HttpContext.Session, "ListMostViwedProduit");
             return new JsonResult(ListMostViwedProduit);
         }
+
+
+
 
 
         public IActionResult Privacy()
