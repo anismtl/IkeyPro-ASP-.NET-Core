@@ -29,13 +29,11 @@ string year = DateTime.Now.ToString("yyyy");
     <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
     <link rel="stylesheet" type="text/css" href="styles/responsive.css">
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
-
 </head>
 <body>
     <div class="super_container">
         <!-- Header -->
         <partial name="~/Views/Shared/_header.cshtml" />
-
         <!-- Banner -->
         <div class="banner">
             <div class="banner_background" style="background-image:url(images/banner_background.jpg)"></div>
@@ -48,8 +46,6 @@ string year = DateTime.Now.ToString("yyyy");
                             <div class="banner_price"><span>@ProduitVedette.Prix*2</span>@ProduitVedette.Prix</div>
                             <div class="banner_product_name">@ProduitVedette.Designtion_produit</div>
                             <div class="button banner_button"><a href="@Url.Action("Produit",  new { codeProduit = ProduitVedette.CodeProduit })" class="readMoreLink">@Localizer["PShopNow"]</a></div>
-
-
                         </div>
                     </div>
                 </div>
@@ -111,10 +107,8 @@ string year = DateTime.Now.ToString("yyyy");
                 <!-- Banner 2 Slider -->
                 <div class="owl-carousel owl-theme banner_2_slider">
                     <!-- Banner 2 Slider Item -->
-
                     @foreach (var produit in ListeProduitByPub)
-                                    {
-
+                    {
                     <div class="owl-item">
                         <div class="banner_2_item">
                             <div class="container fill_height">
@@ -126,8 +120,7 @@ string year = DateTime.Now.ToString("yyyy");
                                             <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
                                             <div class="trends_price">@produit.Prix $</div>
                                             <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                            <div class="button banner_2_button"><a href="@Url.Action("Produit",  new { codeProduit = produit.CodeProduit })" class="readMoreLink">@Localizer["PExplorre"]</a></div>
-                                            
+                                            <div class="button banner_2_button"><a href="@Url.Action("Produit", new { codeProduit = produit.CodeProduit })" class="readMoreLink">@Localizer["PExplorre"]</a></div>
                                         </div>
                                     </div>
                                     <div class="col-lg-8 col-md-6 fill_height">
@@ -139,7 +132,7 @@ string year = DateTime.Now.ToString("yyyy");
                             </div>
                         </div>
                     </div>
-                   }
+                    }
                 </div>
             </div>
         </div>
@@ -162,53 +155,40 @@ string year = DateTime.Now.ToString("yyyy");
                                     <div class="product_panel panel active">
                                         <div class="arrivals_slider slider">
                                             <!-- Slider Item -->
-
-
                                             @foreach (var produit in ListeAllProduits)
-                                    {
-                                        
-                                            @if ( produit.DateRelease == year )
                                             {
-
-}
-
-                                            <div class="arrivals_slider_item">
-                                                <div class="border_active"></div>
-                                                <div class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-                                                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="images/@produit.Image" alt=""></div>
-                                                    <div class="product_content">
-                                                        <div class="product_price">@produit.Prix $</div>
-                                                        <div class="product_name"><div><a>@produit.Editeur</a></div></div>
-                                                        <div class="product_name"><div><a href="@Url.Action("Produit",  new { codeProduit = produit.CodeProduit })" class="readMoreLink">@produit.Designtion_produit</a></div></div>
-                                                        
-
-                                                        <div class="product_extras">
-                                                            <div class="product_color">
+                                                @if ( produit.DateRelease == year )
+                                                {
+                                                    <div class="arrivals_slider_item">
+                                                        <div class="border_active"></div>
+                                                        <div class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
+                                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="images/@produit.Image" alt=""></div>
+                                                            <div class="product_content">
+                                                                <div class="product_price">@produit.Prix $</div>
+                                                                <div class="product_name"><div><a>@produit.Editeur</a></div></div>
+                                                                <div class="product_name"><div>
+                                                                        <a href="@Url.Action("Produit",  new { codeProduit = produit.CodeProduit })" class="readMoreLink">@produit.Designtion_produit</a></div></div>
+                                                                <div class="product_extras">
+                                                                    <div class="product_color"></div>
+                                                                    <button class="product_cart_button">
+                                                                        <a href="@Url.Action("Produit",  new { codeProduit = produit.CodeProduit })" class="readMoreLink">@Localizer["PAddToCart"]</a>
+                                                                    </button>
+                                                                </div>
                                                             </div>
-
-                                                            <button class="product_cart_button"><a href="@Url.Action("Produit",  new { codeProduit = produit.CodeProduit })" class="readMoreLink">@Localizer["PAddToCart"]</a></button>
+                                                            <ul class="product_marks">
+                                                                <li class="product_mark product_new">@Localizer["PNew"]</li>
+                                                            </ul>
                                                         </div>
                                                     </div>
-                                                    <ul class="product_marks">
-                                                        <li class="product_mark product_new">@Localizer["PNew"]</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                             }
-
+                                                 }
                                             }
                                         </div>
                                         <div class="arrivals_slider_dots_cover"></div>
                                     </div>
-
-
-
                                 </div>
-
                                 <div class="col-lg-3">
                                     <div class="arrivals_single clearfix">
                                         <div class="d-flex flex-column align-items-center justify-content-center">
-
                                             <div class="arrivals_single_image"><img src="images/43.jpg" alt=""></div>
                                             <div class="arrivals_single_content">
                                                 <div class="arrivals_single_category"><a href="#">Microsoft</a></div>
@@ -227,16 +207,13 @@ string year = DateTime.Now.ToString("yyyy");
                                                     <button class="arrivals_single_button">@Localizer["PAddToCart"]</button>
                                                 </form>
                                             </div>
-
                                             <ul class="arrivals_single_marks product_marks">
                                                 <li class="arrivals_single_mark product_mark product_new">@Localizer["PNew"]</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
                 </div>
