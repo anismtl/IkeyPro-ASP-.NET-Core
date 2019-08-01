@@ -700,7 +700,7 @@ namespace IkeyPro.DAO
             SqlConnection sqlConnection = DataManager.Get();
             SqlCommand cmd = new SqlCommand
             {
-                CommandText = "GetGetProduit",
+                CommandText = "GetProduit",
                 CommandType = System.Data.CommandType.StoredProcedure,
                 Connection = sqlConnection
             };

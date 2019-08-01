@@ -78,7 +78,27 @@ namespace IkeyPro.Controllers
             return new JsonResult(ListMostViwedProduit);
         }
 
+        public IActionResult produit(string codeProduit)
+        {
+            Produit produit = ProduitDAO.GetProduit(codeProduit);
+            List<Categorie> ListeCategories = CategorieDAO.GetListCategorie();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "SessionListCategorie", ListeCategories);
 
+            List<Editeur> ListeEditeurs1 = EditeurDAO.GetListeEditeur();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeEditeurs", ListeEditeurs1);
+
+            List<Produit> ListeLastDispo = ProduitDAO.GetListeFullProduitByDispo();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeLastDispo", ListeLastDispo);
+            List<Edition> ListeEditions = EditionDAO.GetListeEditeur();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeEditions", ListeEditions);
+
+            List<Produit> ListMostViwedProduit = ProduitDAO.GetListeMostViewedProduit();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "ListMostViwedProduit", ListMostViwedProduit);
+
+            ViewData["Product"] = produit;
+
+            return View();
+        }
 
 
 

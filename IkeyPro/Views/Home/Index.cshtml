@@ -47,7 +47,9 @@ string year = DateTime.Now.ToString("yyyy");
                             <h2 class="banner_text">@Localizer["PSlogan"]</h2>
                             <div class="banner_price"><span>@ProduitVedette.Prix*2</span>@ProduitVedette.Prix</div>
                             <div class="banner_product_name">@ProduitVedette.Designtion_produit</div>
-                            <div class="button banner_button"><a href="GererProduit?id=@ProduitVedette.CodeProduit">@Localizer["PShopNow"]</a></div>
+                            <div class="button banner_button"><a href="@Url.Action("Produit",  new { codeProduit = ProduitVedette.CodeProduit })" class="readMoreLink">@Localizer["PShopNow"]</a></div>
+
+
                         </div>
                     </div>
                 </div>
@@ -124,7 +126,8 @@ string year = DateTime.Now.ToString("yyyy");
                                             <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
                                             <div class="trends_price">@produit.Prix $</div>
                                             <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                            <div class="button banner_2_button"><a href="GererProduit?id=@produit.CodeProduit">@Localizer["PExplorre"]</a></div>
+                                            <div class="button banner_2_button"><a href="@Url.Action("Produit",  new { codeProduit = produit.CodeProduit })" class="readMoreLink">@Localizer["PExplorre"]</a></div>
+                                            
                                         </div>
                                     </div>
                                     <div class="col-lg-8 col-md-6 fill_height">
@@ -176,12 +179,14 @@ string year = DateTime.Now.ToString("yyyy");
                                                     <div class="product_content">
                                                         <div class="product_price">@produit.Prix $</div>
                                                         <div class="product_name"><div><a>@produit.Editeur</a></div></div>
-                                                        <div class="product_name"><div><a href="GererProduit?id=@produit.CodeProduit">@produit.Designtion_produit</a></div></div>
+                                                        <div class="product_name"><div><a href="@Url.Action("Produit",  new { codeProduit = produit.CodeProduit })" class="readMoreLink">@produit.Designtion_produit</a></div></div>
+                                                        
+
                                                         <div class="product_extras">
                                                             <div class="product_color">
                                                             </div>
 
-                                                            <button class="product_cart_button">@produit.DateRelease @Localizer["PAddToCart"]</button>
+                                                            <button class="product_cart_button"><a href="@Url.Action("Produit",  new { codeProduit = produit.CodeProduit })" class="readMoreLink">@Localizer["PAddToCart"]</a></button>
                                                         </div>
                                                     </div>
                                                     <ul class="product_marks">

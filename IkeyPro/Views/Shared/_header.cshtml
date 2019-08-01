@@ -13,8 +13,8 @@
         <div class="container">
             <div class="row">
                 <div class="col d-flex flex-row">
-                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/phone.png" alt=""></div>+514 000 0000</div>
-                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="mailto:ikeyprofessionnel@gmail.com">ikeyprofessionnel@gmail.com</a></div>
+                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="~/images/phone.png" alt=""></div>+514 000 0000</div>
+                    <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="~/images/mail.png" alt=""></div><a href="mailto:ikeyprofessionnel@gmail.com">ikeyprofessionnel@gmail.com</a></div>
                     <div class="top_bar_content ml-auto">
                         <div class="top_bar_menu">
                             <ul class="standard_dropdown top_bar_dropdown">
@@ -33,7 +33,7 @@
 
 
                         <div class="top_bar_user">
-                            <div class="user_icon"><img src="images/user.svg" alt=""></div>
+                            <div class="user_icon"><img src="~/images/user.svg" alt=""></div>
                           
                                 <div> <a href="Affichage?action=register">@Localizer["PRegister"]</a></div>
                                 <div><a href="Affichage?action=login">@Localizer["PSignIn"]</a></div>
@@ -68,7 +68,7 @@
 
                                     </div>
                                 </div>
-                                <button type="submit" class="header_search_button trans_300" value="Submit"><img src="images/search.png" alt=""></button>
+                                <button type="submit" class="header_search_button trans_300" value="Submit"><img src="~/images/search.png" alt=""></button>
                             </form>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                     <div class="cart">
                         <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                             <div class="cart_icon">
-                                <img src="images/cart.png" alt="">
+                                <img src="~/images/cart.png" alt="">
                                 <div class="cart_count">
                                     <span>
                                         <c:if test="${empty panier}">0</c:if>
@@ -203,20 +203,20 @@
                     </div>
                     <ul class="page_menu_nav">
                         <li class="page_menu_item has-children">
-                            <a href="#"><fmt:message key="PLanguage" /><i class="fa fa-angle-down"></i></a>
+                            <a href="#">@Localizer["PLanguage"]<i class="fa fa-angle-down"></i></a>
                             <ul class="page_menu_selection">
-                                <li><a href="#"><fmt:message key="PEnglishLangue" /><i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#"><fmt:message key="PEspagnolLangue" /><i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#"><fmt:message key="PFrancaisLangue" /><i class="fa fa-angle-down"></i></a></li>
+                                <li><a href="#">@Localizer["PEnglishLangue"]<i class="fa fa-angle-down"></i></a></li>
+                                <li><a href="#">@Localizer["PEspagnolLangue"]<i class="fa fa-angle-down"></i></a></li>
+                                <li><a href="#">@Localizer["PFrancaisLangue"]<i class="fa fa-angle-down"></i></a></li>
                             </ul>
                         </li>
                         <li class="page_menu_item">
                             <a href="#">Home<i class="fa fa-angle-down"></i></a>
                         </li>
                         <li class="page_menu_item has-children">
-                            <a href="#"><fmt:message key="PSuperDeals" /><i class="fa fa-angle-down"></i></a>
+                            <a href="#">@Localizer["PSuperDeals"]<i class="fa fa-angle-down"></i></a>
                             <ul class="page_menu_selection">
-                                <li><a href="#"><fmt:message key="PSuperDeals" /><i class="fa fa-angle-down"></i></a></li>
+                                <li><a href="#">@Localizer["PSuperDeals"]<i class="fa fa-angle-down"></i></a></li>
                                 <li class="page_menu_item has-children">
                                     <a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
                                     <ul class="page_menu_selection">
@@ -232,30 +232,30 @@
                             </ul>
                         </li>
                         <li class="page_menu_item has-children">
-                            <a href="#"><fmt:message key="PSuperDeals" /><i class="fa fa-angle-down"></i></a>
+                            <a href="#">@Localizer["PSuperDeals"] <i class="fa fa-angle-down"></i></a>
                             <ul class="page_menu_selection">
-                                <li><a href="#"><fmt:message key="PSuperDeals" /><i class="fa fa-angle-down"></i></a></li>
+                                <li><a href="#">@Localizer["PSuperDeals"]<i class="fa fa-angle-down"></i></a></li>
                                 <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
                                 <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
                                 <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
                             </ul>
                         </li>
                         <li class="page_menu_item has-children">
-                            <a href="#"><fmt:message key="PTrendingStyles" /><i class="fa fa-angle-down"></i></a>
+                            <a href="#">@Localizer["PTrendingStyles"]<i class="fa fa-angle-down"></i></a>
                             <ul class="page_menu_selection">
-                                <li><a href="#"><fmt:message key="PTrendingStyles" /><i class="fa fa-angle-down"></i></a></li>
+                                <li><a href="#">@Localizer["PTrendingStyles"]<i class="fa fa-angle-down"></i></a></li>
                                 <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
                                 <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
                                 <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
                             </ul>
                         </li>
-                        <li class="page_menu_item"><a href="blog.jsp"><fmt:message key="PBlog" /><i class="fa fa-angle-down"></i></a></li>
-                        <li class="page_menu_item"><a href="contact.jsp"><fmt:message key="PContact" /><i class="fa fa-angle-down"></i></a></li>
+                        <li class="page_menu_item"><a href="blog.jsp">@Localizer["PBlog"]<i class="fa fa-angle-down"></i></a></li>
+                        <li class="page_menu_item"><a href="contact.jsp">@Localizer["PContact"]<i class="fa fa-angle-down"></i></a></li>
                     </ul>
 
                     <div class="menu_contact">
-                        <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+1 514 000 0000</div>
-                        <div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:ikeyprofessionnel@gmail.com">ikeyprofessionnel@gmail.com</a></div>
+                        <div class="menu_contact_item"><div class="menu_contact_icon"><img src="~/images/phone_white.png" alt=""></div>+1 514 000 0000</div>
+                        <div class="menu_contact_item"><div class="menu_contact_icon"><img src="~/images/mail_white.png" alt=""></div><a href="mailto:ikeyprofessionnel@gmail.com">ikeyprofessionnel@gmail.com</a></div>
                     </div>
                 </div>
             </div>
