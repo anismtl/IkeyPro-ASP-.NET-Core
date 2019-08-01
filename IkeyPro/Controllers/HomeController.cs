@@ -101,6 +101,32 @@ namespace IkeyPro.Controllers
         }
 
 
+        public IActionResult shop(string categorie)
+        {
+            List<Produit> ListeLastDispo = ProduitDAO.GetListeFullProduitByDispo();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeLastDispo", ListeLastDispo);
+
+            List<Edition> ListeEditions = EditionDAO.GetListeEditeur();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeEditions", ListeEditions);
+
+            List<Editeur> ListeEditeurs1 = EditeurDAO.GetListeEditeur();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeEditeurs", ListeEditeurs1);
+
+            
+
+            List<Produit> ListMostViwedProduit = ProduitDAO.GetListeMostViewedProduit();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "ListMostViwedProduit", ListMostViwedProduit);
+
+            List<Categorie> ListeCategories = CategorieDAO.GetListCategorie();
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "SessionListCategorie", ListeCategories);
+
+            string cat = CategorieDAO.GetCategorie(categorie);
+            List<Produit> ListeProduits = ProduitDAO.GetListeFullProduitByCategorie(categorie);
+            ViewData["ListeProduitsShop"] = ListeProduits;
+            ViewData["ShopTitre"] = cat;
+            return View();
+        }
+
 
         public IActionResult Privacy()
         {
