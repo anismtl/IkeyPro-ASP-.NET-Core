@@ -90,9 +90,9 @@ namespace IkeyPro
                 SupportedUICultures = supportedCultures
             });
 
+     
 
 
-        
 
             app.UseMvc(routes =>
             {

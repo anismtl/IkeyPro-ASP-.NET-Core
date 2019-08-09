@@ -53,29 +53,31 @@
                                 <a> <b>@Localizer["PEdition"] :</b></a> @product.Edition  <br />
                             </div>
                             <div class="order_info d-flex flex-row">
-                                <form name="ProduitForm" action="Panier" method="POST">
-                                    <div class="clearfix" style="z-index: 1000;">
-                                        <!-- Product Quantity -->
-                                        <div class="product_quantity clearfix">
-                                            <span>@Localizer["PQuantity"]  : </span>
-                                            <input id="quantity_input" type="text" pattern="[1-9]*" name="qty" value="1">
-                                            <input type="hidden" name="id" value="@product.CodeProduit">
-                                            <input type="hidden" name="name" value="@product.Designtion_produit">
-                                            <input type="hidden" name="prix" value="@product.Prix">
-                                            <input type="hidden" name="image" value="@product.Image">
-                                            <input type="hidden" name="action" value="ADD">
-                                            <div class="quantity_buttons">
-                                                <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
-                                                <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
+                                
+                                    <form asp-controller="panier" asp-action="buy" method="post">
+                                        <div class="clearfix" style="z-index: 1000;">
+                                            <!-- Product Quantity -->
+                                            <div class="product_quantity clearfix">
+                                                <span>@Localizer["PQuantity"]  : </span>
+                                                <input name="quantity_input" type="text" pattern="[1-9]"  value="1">
+                                                <input type="hidden" name="id" value="@product.CodeProduit">
+                                                <input type="hidden" name="name" value="@product.Designtion_produit">
+                                                <input type="hidden" name="prix" value="@product.Prix">
+                                                <input type="hidden" name="image" value="@product.Image">
+                                                <input type="hidden" name="action" value="ADD">
+                                                <div class="quantity_buttons">
+                                                    <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
+                                                    <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="product_price">$@product.Prix </div>
-                                    <div class="button_container">
-                                        <button type="submit" class="button cart_button">@Localizer["PAddToCart"]</button>
-                                    </div>
-                                </form>
-                            </div>
+                                        <div class="product_price">$@product.Prix </div>
+                                        <div class="button_container">
+                                            <button type="submit" class="button cart_button">@Localizer["PAddToCart"]</button>
+                                         
+                                        </div>
+                                    </form>
+</div>
                         </div>
                     </div>
                 </div>

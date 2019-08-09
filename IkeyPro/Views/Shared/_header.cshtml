@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="col-lg-2 col-sm-3 col-3 order-1">
                     <div class="logo_container">
-                        <div class="logo"><a href="index.jsp">IkeyPro</a></div>
+                        <div class="logo"><a a asp-controller="home" asp-action="index" >IkeyPro</a></div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
@@ -86,22 +86,52 @@
                                 <img src="~/images/cart.png" alt="">
                                 <div class="cart_count">
                                     <span>
-                                        <c:if test="${empty panier}">0</c:if>
-                                        <c:if test="${!empty panier}">${panier.size()}</c:if>
+
+                                        @if (ViewBag.total == null)
+                                        {
+                                            <label>0</label>
+                                        }
+                                        else
+                                        {
+                                            <label> @ViewBag.nombre</label>
+                                        }
+
                                     </span>
                                 </div>
                             </div>
                             <div class="cart_content">
                                 <div class="cart_text">
-                                    <a href="<c:if test="${empty panier}">
-                                        #</c:if>
-                                        <c:if test="${!empty panier}">Panier?action=AFFICHER</c:if>">
-                                        @Localizer["PCart"]
-                                    </a>
+
+
+
+                                    @if (ViewBag.total == null)
+                                    {
+                                        <a>@Localizer["PCart"] </a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-controller="Panier" asp-action="index">@Localizer["PCart"] </a>
+                                    }
+
+
+
+
+
                                 </div>
                                 <div class="cart_price">
-                                    <c:if test="${empty total}">0$</c:if>
-                                    <c:if test="${!empty total}">${total}$</c:if>
+
+                                    @if (ViewBag.total == null)
+                                    {
+                                        <label>0 $</label>
+                                    }
+                                    else
+                                    {
+                                        <label> @ViewBag.total $ </label>
+                                    }
+
+                                                                   
+
+
                                 </div>
                             </div>
                         </div>

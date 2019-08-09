@@ -17,6 +17,7 @@ namespace IkeyPro.Controllers
 {
     public class HomeController : Controller
     {
+       
         public IActionResult Index()
         {
 
@@ -45,6 +46,15 @@ namespace IkeyPro.Controllers
 
             List<Produit> ListeAllProduits = ProduitDAO.GetListeDesProduits();
             SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeAllProduits", ListeAllProduits);
+
+            var cart = SessionHelper.GetObjectFromJson<List<Panier>>(HttpContext.Session, "cart");
+            if (cart !=null)
+            {
+                ViewBag.cart = cart;
+                ViewBag.nombre = cart.Count();
+                ViewBag.total = cart.Sum(item => item.Produit.Prix * item.Quantity);
+            }
+          
 
             // List<Produit> ListMostViwedProduit = ProduitDAO.GetListeMostViwedProduit();
 
@@ -96,6 +106,13 @@ namespace IkeyPro.Controllers
             SessionHelper.SetObjectAsJson(HttpContext.Session, "ListMostViwedProduit", ListMostViwedProduit);
 
             ViewData["Product"] = produit;
+            var cart = SessionHelper.GetObjectFromJson<List<Panier>>(HttpContext.Session, "cart");
+            if (cart != null)
+            {
+                ViewBag.cart = cart;
+                ViewBag.nombre = cart.Count();
+                ViewBag.total = cart.Sum(item => item.Produit.Prix * item.Quantity);
+            }
 
             return View();
         }
@@ -112,7 +129,7 @@ namespace IkeyPro.Controllers
             List<Editeur> ListeEditeurs1 = EditeurDAO.GetListeEditeur();
             SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeEditeurs", ListeEditeurs1);
 
-            
+
 
             List<Produit> ListMostViwedProduit = ProduitDAO.GetListeMostViewedProduit();
             SessionHelper.SetObjectAsJson(HttpContext.Session, "ListMostViwedProduit", ListMostViwedProduit);
@@ -124,6 +141,14 @@ namespace IkeyPro.Controllers
             List<Produit> ListeProduits = ProduitDAO.GetListeFullProduitByCategorie(categorie);
             ViewData["ListeProduitsShop"] = ListeProduits;
             ViewData["ShopTitre"] = cat;
+
+            var cart = SessionHelper.GetObjectFromJson<List<Panier>>(HttpContext.Session, "cart");
+            if (cart != null)
+            {
+                ViewBag.cart = cart;
+                ViewBag.nombre = cart.Count();
+                ViewBag.total = cart.Sum(item => item.Produit.Prix * item.Quantity);
+            }
             return View();
         }
 
