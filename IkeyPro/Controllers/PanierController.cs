@@ -16,10 +16,9 @@ namespace IkeyPro.Controllers
         public IActionResult Index()
         {
             var cart = SessionHelper.GetObjectFromJson<List<Panier>>(HttpContext.Session, "cart");
-            ViewBag.nombre =cart.Count();
-            ViewBag.cart = cart;
-            ViewBag.total = cart.Sum(item => item.Produit.Prix * item.Quantity);
-       
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cartNombre", cart.Count());
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cartTotal", cart.Sum(item => item.Produit.Prix * item.Quantity));
+               
             return View();          
         }
 
@@ -33,7 +32,9 @@ namespace IkeyPro.Controllers
                 List<Panier> cart = new List<Panier>();
                 cart.Add(new Panier { Produit = ProduitDAO.GetProduit(id), Quantity = int.Parse(quantity_input) });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
-                
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cartNombre", cart.Count());
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cartTotal", cart.Sum(item => item.Produit.Prix * item.Quantity));
+
             }
             else
             {
@@ -48,6 +49,8 @@ namespace IkeyPro.Controllers
                     cart.Add(new Panier { Produit = ProduitDAO.GetProduit(id), Quantity = int.Parse(quantity_input) });
                 }
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cartNombre", cart.Count());
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cartTotal", cart.Sum(item => item.Produit.Prix * item.Quantity));
             }
             return RedirectToAction("Index");
         }
@@ -61,6 +64,8 @@ namespace IkeyPro.Controllers
             int index = isExist(id);
             cart.RemoveAt(index);
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cartNombre", cart.Count());
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cartTotal", cart.Sum(item => item.Produit.Prix * item.Quantity));
             return RedirectToAction("Index");
         }
 
@@ -71,6 +76,8 @@ namespace IkeyPro.Controllers
             List<Panier> cart = SessionHelper.GetObjectFromJson<List<Panier>>(HttpContext.Session, "cart");
             cart.Clear();
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cartNombre", cart.Count());
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cartTotal", cart.Sum(item => item.Produit.Prix * item.Quantity));
             return RedirectToAction("index","home");
         }
 

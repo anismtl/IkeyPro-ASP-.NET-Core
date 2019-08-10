@@ -35,7 +35,7 @@ function getMostViewProduitList() {
 
             for (i = 0; i < liste.length; i++) {
 
-                var v = $('<div class="col-md-2 owl-item"><div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center"><div class="viewed_image"><img src="images/' + liste[i].image + '" alt=""></div><div class="viewed_content text-center"><div class="viewed_price">$' + liste[i].prix + '</div><div class="viewed_name"><a href="GererProduit?id=' + liste[i].codeProduit + '">' + liste[i].designtion_produit + '</a></div></div><ul class="item_marks"><li class="item_mark item_discount">-25%</li><li class="item_mark item_new">new</li></ul></div></div>');
+                var v = $('<div class="col-md-2 owl-item"><div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center"><div class="viewed_image"><img src="images/' + liste[i].image + '" alt=""></div><div class="viewed_content text-center"><div class="viewed_price">$' + liste[i].prix + '</div><div class="viewed_name"><a href="home/produit?codeProduit=' + liste[i].codeProduit + '">' + liste[i].designtion_produit + '</a></div></div><ul class="item_marks"><li class="item_mark item_discount">-25%</li><li class="item_mark item_new">new</li></ul></div></div>');
                 v.appendTo('#des');
             }
 

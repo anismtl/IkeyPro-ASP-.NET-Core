@@ -170,9 +170,12 @@ string year = DateTime.Now.ToString("yyyy");
                                                                         <a href="@Url.Action("Produit",  new { codeProduit = produit.CodeProduit })" class="readMoreLink">@produit.Designtion_produit</a></div></div>
                                                                 <div class="product_extras">
                                                                     <div class="product_color"></div>
-                                                                    <button class="product_cart_button">
-                                                                        <a href="@Url.Action("Produit",  new { codeProduit = produit.CodeProduit })" class="readMoreLink">@Localizer["PAddToCart"]</a>
-                                                                    </button>
+                                                                    <form method="post">
+                                                                        <button type="submit" class="product_cart_button" asp-controller="home" asp-action="produit" asp-route-codeProduit="@produit.CodeProduit">
+
+                                                                            @Localizer["PAddToCart"]
+                                                                        </button>
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                             <ul class="product_marks">
@@ -197,14 +200,12 @@ string year = DateTime.Now.ToString("yyyy");
                                                     <div class="arrivals_single_price text-right">1330.0$</div>
                                                 </div>
                                                 <div class="rating_r rating_r_4 arrivals_single_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                                                <form name="SingleForm" action="Panier" method="POST">
-                                                    <input type="hidden" name="id" value="43">
-                                                    <input type="hidden" name="name" value="Project Professional 2019">
-                                                    <input type="hidden" name="prix" value="1330">
-                                                    <input type="hidden" name="image" value="43.jpg">
-                                                    <input type="hidden" name="qty" value="1">
-                                                    <input type="hidden" name="action" value="ADD">
-                                                    <button class="arrivals_single_button">@Localizer["PAddToCart"]</button>
+                                                <form name="SingleForm" method="POST">
+                                                                                         
+                                                    <button type="submit" class="arrivals_single_button" asp-controller="home" asp-action="produit" asp-route-codeProduit="43">
+                                                        @Localizer["PAddToCart"]
+                                                    </button>
+
                                                 </form>
                                             </div>
                                             <ul class="arrivals_single_marks product_marks">

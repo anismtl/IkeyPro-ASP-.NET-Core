@@ -6,13 +6,16 @@
     var ListeEditeurs = SessionHelper.GetObjectFromJson<List<Editeur>>(Context.Session, "ListeEditeurs");
     var ListeEditions = SessionHelper.GetObjectFromJson<List<Edition>>(Context.Session, "ListeEditions");
     var ListeLastDispo = SessionHelper.GetObjectFromJson<List<Produit>>(Context.Session, "ListeLastDispo");
+    int cartNombre = SessionHelper.GetObjectFromJson<int>(Context.Session, "cartNombre");
+    double cartTotal = SessionHelper.GetObjectFromJson<double>(Context.Session, "cartTotal");
+    //  int nombre = cart.Count();
+    //  double total = cart.Sum(item => item.Produit.Prix * item.Quantity);
 }
 <header class="header">
     <!-- Top Bar -->
     <div class="top_bar">
         <div class="container">
-            <div class="row">
-                <div class="col d-flex flex-row">
+            <div class="row">               <div class="col d-flex flex-row">
                     <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="~/images/phone.png" alt=""></div>+514 000 0000</div>
                     <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="~/images/mail.png" alt=""></div><a href="mailto:ikeyprofessionnel@gmail.com">ikeyprofessionnel@gmail.com</a></div>
                     <div class="top_bar_content ml-auto">
@@ -87,13 +90,13 @@
                                 <div class="cart_count">
                                     <span>
 
-                                        @if (ViewBag.total == null)
+                                        @if (cartNombre == 0)
                                         {
                                             <label>0</label>
                                         }
                                         else
                                         {
-                                            <label> @ViewBag.nombre</label>
+                                            <label> @cartNombre</label>
                                         }
 
                                     </span>
@@ -104,7 +107,7 @@
 
 
 
-                                    @if (ViewBag.total == null)
+                                    @if (cartNombre == 0)
                                     {
                                         <a>@Localizer["PCart"] </a>
                                     }
@@ -120,13 +123,13 @@
                                 </div>
                                 <div class="cart_price">
 
-                                    @if (ViewBag.total == null)
+                                    @if (cartNombre == 0)
                                     {
                                         <label>0 $</label>
                                     }
                                     else
                                     {
-                                        <label> @ViewBag.total $ </label>
+                                        <label> @cartTotal $ </label>
                                     }
 
                                                                    
