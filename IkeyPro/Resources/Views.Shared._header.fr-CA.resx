@@ -177,4 +177,7 @@
   <data name="PYourCompte" xml:space="preserve">
     <value>to your compte</value>
   </data>
+  <data name="PRechercheParTout" xml:space="preserve">
+    <value>Recherche</value>
+  </data>
 </root>

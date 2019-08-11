@@ -60,19 +60,19 @@
                     <div class="header_search">
                         <div class="header_search_content">
                             <div class="header_search_form_container">
-                                <form action="Recherche" class="header_search_form clearfix">
-                                    <input type="search" name="rechecheStr" required="required" class="header_search_input" placeholder="@Localizer["PSearchProducts"]">
+                                <form method="POST" class="header_search_form clearfix" >
+                                    <input type="text" name="rechecheStr" required="required" class="header_search_input" placeholder="@Localizer["PRechercheParTout"]">
                                     <div class="custom_dropdown">
                                         <div class="custom_dropdown_list">
                                             <span class="custom_dropdown_placeholder clc">
-                                                @Localizer["PRechecheParTout"]
-                                        </span>
-
-
+                                                @Localizer["PRechercheParTout"]
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <button type="submit" class="header_search_button trans_300" value="Submit"><img src="~/images/search.png" alt=""></button>
-                            </form>
+                                    <button type="submit" value="Submit" class="header_search_button trans_300" asp-controller="shop" asp-action="Recherche">
+                                        <img src="~/images/search.png" alt="">
+                                    </button>
+                                </form>
                         </div>
                     </div>
                 </div>
