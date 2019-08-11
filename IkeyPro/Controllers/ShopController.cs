@@ -50,5 +50,16 @@ namespace IkeyPro.Controllers
             return View("shop");
         }
 
+        public IActionResult RechEditeur(string cat)
+        {
+            List<Editeur> ListeEditeur = ProduitDAO.GetListeDistinctEditeurByCat(cat);
+            // List<Categorie> ListeCategories = SessionHelper.GetObjectFromJson<List<Categorie>>(HttpContext.Session, "SessionListCategorie");
+            return new JsonResult(ListeEditeur);
+        }
+        public IActionResult RechEdition(string cat, string editeur)
+        {
+            List<Edition> ListeEdition = ProduitDAO.GetListeDistinctEditionByCat(cat, editeur);
+            return new JsonResult(ListeEdition);
+        }
     }
 }
