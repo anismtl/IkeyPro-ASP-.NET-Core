@@ -93,14 +93,12 @@ namespace IkeyPro
             };
             app.UseRequestLocalization(new RequestLocalizationOptions
             {
-                DefaultRequestCulture = new RequestCulture(culture: "en-US", uiCulture: "en-US"),
+                DefaultRequestCulture = new RequestCulture(culture: "fr-CA", uiCulture: "fr-CA"),
                 SupportedCultures = supportedCultures,
                 SupportedUICultures = supportedCultures
             });
 
-            // variable de session
-          //  List<Categorie> ListeCategories = CategorieDAO.GetListCategorie();
-          //  SessionHelper.SetObjectAsJson(HttpContext.Session, "SessionListCategorie", ListeCategories);
+
 
 
             app.UseMvc(routes =>

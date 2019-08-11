@@ -6,14 +6,25 @@ using IkeyPro.ADO;
 using Microsoft.AspNetCore.Http;
 using IkeyPro.Helpers;
 using IkeyPro.DAO;
+using System.Threading;
+using System;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace IkeyPro.Controllers
 {
     public class HomeController : Controller
     {
-       
+        //private readonly IHttpContextAccessor _httpContextAccessor;
+
+        //public HomeController(IHttpContextAccessor httpContextAccessor)
+        //{
+        //    this._httpContextAccessor = httpContextAccessor;
+        //}
+
         public IActionResult Index()
         {
+           // Thread.CurrentThread.CurrentCulture = new CultureInfo("ar-DZ");
 
             List<Categorie> ListeCategories = CategorieDAO.GetListCategorie();
             SessionHelper.SetObjectAsJson(HttpContext.Session, "SessionListCategorie", ListeCategories);
@@ -40,6 +51,21 @@ namespace IkeyPro.Controllers
             SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeAllProduits", ListeAllProduits);
 
             return View();
+        }
+
+
+        public IActionResult langue(string culture)
+        {
+         
+
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires=DateTimeOffset.UtcNow.AddYears(1)}
+                
+                );
+
+            return new JsonResult("ok");
         }
 
         public IActionResult Cat()

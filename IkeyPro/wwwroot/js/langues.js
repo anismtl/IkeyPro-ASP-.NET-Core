@@ -20,11 +20,11 @@ function changeLangue(param) {
             resultat = JSON.parse(reponseJSON);
 
             if (resultat = 'ok') {
-                window.location.reload(true);
+              window.location.reload(true);
             }
         }
     }
-    xhr.open("GET", "Ajax?action=ChangeLangue&langue=" + val, true);
+    xhr.open("GET", "Home/langue?culture=" + val, true);
     xhr.send();
 
 
