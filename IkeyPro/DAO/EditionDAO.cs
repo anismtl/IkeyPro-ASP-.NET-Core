@@ -50,9 +50,33 @@ namespace IkeyPro.DAO
             */
         }
 
+        public static string GetEdition(string id)
+        {
+            SqlConnection sqlConnection = DataManager.Get();
 
+            SqlCommand cmd = new SqlCommand
+            {
+                CommandText = "GetEditionById",
+                CommandType = System.Data.CommandType.StoredProcedure,
+                Connection = sqlConnection
+            };
 
+            sqlConnection.Open();
 
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id", id));
 
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            string result = null;
+
+            while (reader.Read())
+            {
+                result = reader["EDITION"].ToString();
+            }
+
+            sqlConnection.Close();
+            return result;
+        }
     }
 }

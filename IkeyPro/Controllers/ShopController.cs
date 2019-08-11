@@ -33,11 +33,11 @@ namespace IkeyPro.Controllers
         }
 
 
-                public IActionResult Edition(string edition)
+        public IActionResult Edition(string edition)
         {
             List<Produit> ListeProduits = ProduitDAO.GetListeFullProduitByEdition(edition);
             ViewData["ListeProduitsShop"] = ListeProduits;
-            ViewData["ShopTitre"] = "edition";
+            ViewData["ShopTitre"] = EditionDAO.GetEdition(edition);
             return View("shop");
         }
 
