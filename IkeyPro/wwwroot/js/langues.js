@@ -24,7 +24,7 @@ function changeLangue(param) {
             }
         }
     }
-    xhr.open("GET", "Home/langue?culture=" + val, true);
+    xhr.open("GET", "/Home/langue?culture=" + val, true);
     xhr.send();
 
 

@@ -117,7 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="PBlog" xml:space="preserve">
+    <value>Blog</value>
+  </data>
+  <data name="PCart" xml:space="preserve">
+    <value>Cart</value>
+  </data>
+  <data name="Pcategories" xml:space="preserve">
+    <value>categories</value>
+  </data>
+  <data name="PContact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="PEdition" xml:space="preserve">
+    <value>Edition</value>
+  </data>
+  <data name="PEnglishLangue" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="PEspagnolLangue" xml:space="preserve">
+    <value>Spanish</value>
+  </data>
+  <data name="PFeaturedBrands" xml:space="preserve">
+    <value>Featured Brands</value>
+  </data>
+  <data name="PFrancaisLangue" xml:space="preserve">
+    <value>French</value>
+  </data>
+  <data name="PHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="PLastChanse" xml:space="preserve">
+    <value>Last Chance</value>
+  </data>
+  <data name="PRechecheParTout" xml:space="preserve">
+    <value>Search on the site</value>
+  </data>
   <data name="PRegister" xml:space="preserve">
-    <value>S'Inscrire</value>
+    <value>Register</value>
+  </data>
+  <data name="PSearchProducts" xml:space="preserve">
+    <value>Search for products...</value>
+  </data>
+  <data name="PSignIn" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="PSignOut" xml:space="preserve">
+    <value>Sign Out</value>
+  </data>
+  <data name="PSuperDeals" xml:space="preserve">
+    <value>Super Deals</value>
+  </data>
+  <data name="PTrendingStyles" xml:space="preserve">
+    <value>Trending Styles</value>
+  </data>
+  <data name="PWelcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="PYourCompte" xml:space="preserve">
+    <value>to your compte</value>
   </data>
 </root>
