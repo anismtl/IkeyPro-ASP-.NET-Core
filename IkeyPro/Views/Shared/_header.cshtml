@@ -165,7 +165,7 @@
                                     @foreach (var produit in ListeLastDispo)
                                     {
                                         <li>
-                                            <a href="ListeProduits?action=editeur&edit=@produit.CodeProduit ">
+                                            <a href="/Home/produit?codeProduit=@produit.CodeProduit ">
                                                 @produit.Designtion_produit<i class="fas fa-chevron-down"></i>
                                             </a>
                                         </li>
@@ -178,7 +178,7 @@
                                     @foreach (var edition in ListeEditions)
                                     {
                                         <li>
-                                            <a href="ListeProduits?action=editeur&edit=@edition.Id_Edition ">
+                                            <a href="Shop/Edition?edition=@edition.Id_Edition ">
                                                 @edition.Edition_Designation<i class="fas fa-chevron-down"></i>
                                             </a>
                                         </li>
@@ -191,7 +191,7 @@
                                     @foreach (var editeur in ListeEditeurs)
                                     {
                                         <li>
-                                            <a href="ListeProduits?action=editeur&edit=@editeur.Id_Editeur ">
+                                            <a href="Shop/Editeur?editeur=@editeur.Id_Editeur ">
                                                 @editeur.Editeur_Designation<i class="fas fa-chevron-down"></i>
                                             </a>
                                         </li>

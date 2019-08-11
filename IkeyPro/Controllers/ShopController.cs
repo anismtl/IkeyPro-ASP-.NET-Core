@@ -16,18 +16,39 @@ namespace IkeyPro.Controllers
             return View();
         }
 
-        public IActionResult Shop()
+        public IActionResult Shop(string categorie)
         {
-            List<Produit> ListeProduits = ProduitDAO.GetListeMostViewedProduit();
-            ViewData["ListMostViwedProduit"] = ListeProduits;
-            ViewData["ShopTitre"] = "Shop";
+            string cat = CategorieDAO.GetCategorie(categorie);
+            List<Produit> ListeProduits = ProduitDAO.GetListeFullProduitByCategorie(categorie);
+            ViewData["ListeProduitsShop"] = ListeProduits;
+            ViewData["ShopTitre"] = cat;
             return View();
         }
         public IActionResult Recherche(string rechecheStr)
         {
             List<Produit> ListeProduits = ProduitDAO.GetListeDesProduitsByName(rechecheStr);
             ViewData["ListeProduitsShop"] = ListeProduits;
+            ViewData["ShopTitre"] = "Recherche";
             return View("shop");
         }
+
+
+                public IActionResult Edition(string edition)
+        {
+            List<Produit> ListeProduits = ProduitDAO.GetListeFullProduitByEdition(edition);
+            ViewData["ListeProduitsShop"] = ListeProduits;
+            ViewData["ShopTitre"] = "edition";
+            return View("shop");
+        }
+
+
+        public IActionResult Editeur(string editeur)
+        {
+            List<Produit> ListeProduits = ProduitDAO.GetListeFullProduitByEditeur(editeur);
+            ViewData["ListeProduitsShop"] = ListeProduits;
+            ViewData["ShopTitre"] = EditeurDAO.GetEditeur(editeur);
+            return View("shop");
+        }
+
     }
 }
