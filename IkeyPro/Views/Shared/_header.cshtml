@@ -8,6 +8,7 @@
     var ListeLastDispo = SessionHelper.GetObjectFromJson<List<Produit>>(Context.Session, "ListeLastDispo");
     int cartNombre = SessionHelper.GetObjectFromJson<int>(Context.Session, "cartNombre");
     double cartTotal = SessionHelper.GetObjectFromJson<double>(Context.Session, "cartTotal");
+    string langue = SessionHelper.GetObjectFromJson<string>(Context.Session, "langue");
     //  int nombre = cart.Count();
     //  double total = cart.Sum(item => item.Produit.Prix * item.Quantity);
 }
@@ -21,7 +22,18 @@
                     <div class="top_bar_content ml-auto">
                         <div class="top_bar_menu">
                             <ul class="standard_dropdown top_bar_dropdown">
-
+                                @if (langue == "fr-CA")
+                                {
+                                    <li>
+                                        <a href="#">@Localizer["PFrancaisLangue"]<i class="fas fa-chevron-down"></i></a>
+                                        <ul>
+                                            <li><a href="#" id="llang" onclick="changeLangue('fr-CA');">@Localizer["PFrancaisLangue"]</a></li>
+                                            <li><a href="#" id="llang" onclick="changeLangue('en-US');">@Localizer["PEnglishLangue"]</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                else if (langue == "en-US")
+                                {
                                     <li>
                                         <a href="#">@Localizer["PEnglishLangue"]<i class="fas fa-chevron-down"></i></a>
                                         <ul>
@@ -29,7 +41,10 @@
                                             <li><a href="#" id="llang" onclick="changeLangue('en-US');">@Localizer["PEnglishLangue"]</a></li>
                                         </ul>
                                     </li>
-                              
+                                }
+
+
+
                             </ul>
                         </div>
 
@@ -61,11 +76,11 @@
                         <div class="header_search_content">
                             <div class="header_search_form_container">
                                 <form method="POST" class="header_search_form clearfix" >
-                                    <input type="text" name="rechecheStr" required="required" class="header_search_input" placeholder="@Localizer["PRechercheParTout"]">
+                                    <input type="text" name="rechecheStr" required="required" class="header_search_input" placeholder="@Localizer["PSearchProducts"]">
                                     <div class="custom_dropdown">
                                         <div class="custom_dropdown_list">
                                             <span class="custom_dropdown_placeholder clc">
-                                                @Localizer["PRechercheParTout"]
+                                                @Localizer["PRechecheParTout"]
                                             </span>
                                         </div>
                                     </div>
@@ -178,7 +193,7 @@
                                     @foreach (var edition in ListeEditions)
                                     {
                                         <li>
-                                            <a href="Shop/Edition?edition=@edition.Id_Edition ">
+                                            <a href="/Shop/Edition?edition=@edition.Id_Edition ">
                                                 @edition.Edition_Designation<i class="fas fa-chevron-down"></i>
                                             </a>
                                         </li>
@@ -191,7 +206,7 @@
                                     @foreach (var editeur in ListeEditeurs)
                                     {
                                         <li>
-                                            <a href="Shop/Editeur?editeur=@editeur.Id_Editeur ">
+                                            <a href="/Shop/Editeur?editeur=@editeur.Id_Editeur ">
                                                 @editeur.Editeur_Designation<i class="fas fa-chevron-down"></i>
                                             </a>
                                         </li>

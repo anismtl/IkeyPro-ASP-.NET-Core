@@ -16,13 +16,13 @@ namespace IkeyPro.Controllers
             return View();
         }
 
-        public IActionResult Shop(string categorie)
+        public IActionResult shopping(string categorie)
         {
             string cat = CategorieDAO.GetCategorie(categorie);
             List<Produit> ListeProduits = ProduitDAO.GetListeFullProduitByCategorie(categorie);
             ViewData["ListeProduitsShop"] = ListeProduits;
             ViewData["ShopTitre"] = cat;
-            return View();
+            return View("shop");
         }
         public IActionResult Recherche(string rechecheStr)
         {
@@ -48,6 +48,23 @@ namespace IkeyPro.Controllers
             ViewData["ListeProduitsShop"] = ListeProduits;
             ViewData["ShopTitre"] = EditeurDAO.GetEditeur(editeur);
             return View("shop");
+        }
+
+        public IActionResult RechEditeur(string cat)
+        {
+            List<Editeur> ListeEditeur = ProduitDAO.GetListeDistinctEditeurByCat(cat);
+           // List<Categorie> ListeCategories = SessionHelper.GetObjectFromJson<List<Categorie>>(HttpContext.Session, "SessionListCategorie");
+            return new JsonResult(ListeEditeur);
+
+        }
+
+
+        public IActionResult RechEdition(string cat, string editeur)
+        {
+            List<Edition> ListeEdition = ProduitDAO.GetListeDistinctEditionByCat(cat, editeur);
+      
+            return new JsonResult(ListeEdition);
+
         }
 
     }

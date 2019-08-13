@@ -117,64 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="PBlog" xml:space="preserve">
-    <value>Blog</value>
+  <data name="PMostViewed" xml:space="preserve">
+    <value>Most Viewed</value>
   </data>
-  <data name="PCart" xml:space="preserve">
-    <value>Panier</value>
+  <data name="PName" xml:space="preserve">
+    <value>Name</value>
   </data>
-  <data name="Pcategories" xml:space="preserve">
-    <value>categories</value>
+  <data name="PNew" xml:space="preserve">
+    <value>new</value>
   </data>
-  <data name="PContact" xml:space="preserve">
-    <value>Contactez-nous</value>
-  </data>
-  <data name="PEdition" xml:space="preserve">
-    <value>Edition</value>
-  </data>
-  <data name="PEnglishLangue" xml:space="preserve">
-    <value>Anglais</value>
-  </data>
-  <data name="PEspagnolLangue" xml:space="preserve">
-    <value>Spanish</value>
-  </data>
-  <data name="PFeaturedBrands" xml:space="preserve">
-    <value>Meilleurs Editeurs</value>
-  </data>
-  <data name="PFrancaisLangue" xml:space="preserve">
-    <value>Français</value>
-  </data>
-  <data name="PHome" xml:space="preserve">
-    <value>Accueil</value>
-  </data>
-  <data name="PLastChanse" xml:space="preserve">
-    <value>Derniere chance</value>
-  </data>
-  <data name="PRechecheParTout" xml:space="preserve">
-    <value>Recherche sur le site</value>
-  </data>
-  <data name="PRegister" xml:space="preserve">
-    <value>S'inscrire</value>
-  </data>
-  <data name="PSearchProducts" xml:space="preserve">
-    <value>Chercher des produits...</value>
-  </data>
-  <data name="PSignIn" xml:space="preserve">
-    <value>Ouvrir une session</value>
-  </data>
-  <data name="PSignOut" xml:space="preserve">
-    <value>Fermer session</value>
-  </data>
-  <data name="PSuperDeals" xml:space="preserve">
-    <value>Mega Rabais</value>
-  </data>
-  <data name="PTrendingStyles" xml:space="preserve">
-    <value>Styles de tendance</value>
-  </data>
-  <data name="PWelcome" xml:space="preserve">
-    <value>Bienvenu(e)</value>
-  </data>
-  <data name="PYourCompte" xml:space="preserve">
-    <value>À ton compte</value>
+  <data name="PPrice" xml:space="preserve">
+    <value>Price</value>
   </data>
 </root>

@@ -15,17 +15,11 @@ namespace IkeyPro.Controllers
 {
     public class HomeController : Controller
     {
-        //private readonly IHttpContextAccessor _httpContextAccessor;
-
-        //public HomeController(IHttpContextAccessor httpContextAccessor)
-        //{
-        //    this._httpContextAccessor = httpContextAccessor;
-        //}
+ 
 
         public IActionResult Index()
         {
-           // Thread.CurrentThread.CurrentCulture = new CultureInfo("ar-DZ");
-
+        
             List<Categorie> ListeCategories = CategorieDAO.GetListCategorie();
             SessionHelper.SetObjectAsJson(HttpContext.Session, "SessionListCategorie", ListeCategories);
 
@@ -49,7 +43,12 @@ namespace IkeyPro.Controllers
 
             List<Produit> ListeAllProduits = ProduitDAO.GetListeDesProduits();
             SessionHelper.SetObjectAsJson(HttpContext.Session, "ListeAllProduits", ListeAllProduits);
-
+            string langue = SessionHelper.GetObjectFromJson<string>(HttpContext.Session, "langue");
+            if (langue==null)
+            {
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "langue", "fr-CA");
+            }
+          
             return View();
         }
 
@@ -57,14 +56,13 @@ namespace IkeyPro.Controllers
         public IActionResult langue(string culture)
         {
          
-
-            Response.Cookies.Append(
+                Response.Cookies.Append(
                 CookieRequestCultureProvider.DefaultCookieName,
                 CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
                 new CookieOptions { Expires=DateTimeOffset.UtcNow.AddYears(1)}
                 
                 );
-
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "langue", culture);
             return new JsonResult("ok");
         }
 
