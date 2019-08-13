@@ -119,38 +119,38 @@ function chercher() {
         alert("Champ Durée est Obligatoire");
     } //else {
 
-//var xhr = new XMLHttpRequest();
-//    var reponseJSON, liste2, s;
-//    xhr.onreadystatechange = function () {
-//
-//        if (this.readyState == 4 && this.status == 200) {
-//
-////            reponseJSON = this.responseText;
-////            liste2 = JSON.parse(reponseJSON);
-////            s = "<option>--Choisir--</option>";
-////            for (i = 0; i < liste2.length; i++) {
-////                s += "<option value=" + liste2[i].id_Edition + ">" + liste2[i].Edition + "</option>";
-////            }
-////            document.getElementById("dur").innerHTML = s;
-//
-//
-//
-//        } else if (this.readyState == 4) {
-//            alert("Erreur AJAX");
-//        }
-//    }
-//    xhr.open("GET", "Ajax?action=Recherche&cat=" + val1 + "&editeur=" + val2+"&edition="+val3, true);
-//    xhr.send();
-//
-//
+    //var xhr = new XMLHttpRequest();
+    //    var reponseJSON, liste2, s;
+    //    xhr.onreadystatechange = function () {
+    //
+    //        if (this.readyState == 4 && this.status == 200) {
+    //
+    ////            reponseJSON = this.responseText;
+    ////            liste2 = JSON.parse(reponseJSON);
+    ////            s = "<option>--Choisir--</option>";
+    ////            for (i = 0; i < liste2.length; i++) {
+    ////                s += "<option value=" + liste2[i].id_Edition + ">" + liste2[i].Edition + "</option>";
+    ////            }
+    ////            document.getElementById("dur").innerHTML = s;
+    //
+    //
+    //
+    //        } else if (this.readyState == 4) {
+    //            alert("Erreur AJAX");
+    //        }
+    //    }
+    //    xhr.open("GET", "Ajax?action=Recherche&cat=" + val1 + "&editeur=" + val2+"&edition="+val3, true);
+    //    xhr.send();
+    //
+    //
 
 
 
 
 
-     //   var chemin = "navires.php?reg=" + val1 + "&des=" + val2 + "&dur=" + val3;
-      //  window.location.href = chemin;
-  //  }
+    //   var chemin = "navires.php?reg=" + val1 + "&des=" + val2 + "&dur=" + val3;
+    //  window.location.href = chemin;
+    //  }
 }
 
 
