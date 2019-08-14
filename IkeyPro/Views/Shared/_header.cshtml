@@ -53,8 +53,8 @@
                         <div class="top_bar_user">
                             <div class="user_icon"><img src="~/images/user.svg" alt=""></div>
                           
-                                <div> <a href="Affichage?action=register">@Localizer["PRegister"]</a></div>
-                                <div><a href="Affichage?action=login">@Localizer["PSignIn"]</a></div>
+                                <div> <a href="#">@Localizer["PRegister"]</a></div>
+                                <div><a href="#">@Localizer["PSignIn"]</a></div>
                        
  
                         </div>
@@ -213,8 +213,8 @@
                                     }
                                 </ul>
                             </li>
-                            <li><a href="Affichage?action=blog">@Localizer["PBlog"]<i class="fas fa-chevron-down"></i></a></li>
-                            <li><a href="Affichage?action=contact">@Localizer["PContact"]<i class="fas fa-chevron-down"></i></a></li>
+                            <li><a asp-controller="home" asp-action="blog">@Localizer["PBlog"]<i class="fas fa-chevron-down"></i></a></li>
+                            <li><a asp-controller="home" asp-action="contact">@Localizer["PContact"]<i class="fas fa-chevron-down"></i></a></li>
                         </ul>
                     </div>
 
