@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="PCart" xml:space="preserve">
-    <value>Cart</value>
+    <value>Panier</value>
   </data>
   <data name="PDelete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Supprimer</value>
   </data>
   <data name="PMagasiner" xml:space="preserve">
-    <value>Shopping</value>
+    <value>Magasiner</value>
   </data>
   <data name="PName" xml:space="preserve">
-    <value>Name</value>
+    <value>Nom</value>
   </data>
   <data name="PPrice" xml:space="preserve">
-    <value>Price</value>
+    <value>Prix</value>
   </data>
   <data name="PQuantity" xml:space="preserve">
-    <value>Quantity</value>
+    <value>Quantité</value>
   </data>
 </root>

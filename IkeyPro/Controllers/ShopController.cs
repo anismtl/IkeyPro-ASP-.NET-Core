@@ -42,6 +42,15 @@ namespace IkeyPro.Controllers
         }
 
 
+        public IActionResult RechercheDetail(string Rechcat,string edition2,string editeur2)
+        {
+            List<Produit> ListeProduits = ProduitDAO.RechercheProduits(Rechcat,editeur2,edition2);
+            ViewData["ListeProduitsShop"] = ListeProduits;
+            ViewData["ShopTitre"] = "Recherche";
+            return View("shop");
+        }
+
+
         public IActionResult Editeur(string editeur)
         {
             List<Produit> ListeProduits = ProduitDAO.GetListeFullProduitByEditeur(editeur);

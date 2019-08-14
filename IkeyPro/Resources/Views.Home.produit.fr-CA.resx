@@ -117,22 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="PCart" xml:space="preserve">
-    <value>Cart</value>
+  <data name="PAddToCart" xml:space="preserve">
+    <value>Ajouter au panier</value>
   </data>
-  <data name="PDelete" xml:space="preserve">
-    <value>Delete</value>
+  <data name="PEdition" xml:space="preserve">
+    <value>Edition</value>
   </data>
-  <data name="PMagasiner" xml:space="preserve">
-    <value>Shopping</value>
+  <data name="PLangue" xml:space="preserve">
+    <value>Langue</value>
   </data>
-  <data name="PName" xml:space="preserve">
-    <value>Name</value>
+  <data name="PNew" xml:space="preserve">
+    <value>Nouveau</value>
   </data>
-  <data name="PPrice" xml:space="preserve">
-    <value>Price</value>
+  <data name="PPlateforme" xml:space="preserve">
+    <value>Plateforme</value>
   </data>
   <data name="PQuantity" xml:space="preserve">
-    <value>Quantity</value>
+    <value>Quantité</value>
+  </data>
+  <data name="PRecentlyViewed" xml:space="preserve">
+    <value>Vu récemment</value>
+  </data>
+  <data name="PReleaseDate" xml:space="preserve">
+    <value>Date de sortie</value>
   </data>
 </root>

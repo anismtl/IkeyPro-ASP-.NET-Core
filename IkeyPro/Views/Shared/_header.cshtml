@@ -68,7 +68,7 @@
             <div class="row">
                 <div class="col-lg-2 col-sm-3 col-3 order-1">
                     <div class="logo_container">
-                        <div class="logo"><a a asp-controller="home" asp-action="index" >IkeyPro</a></div>
+                        <div class="logo"><a asp-controller="home" asp-action="index" >IkeyPro</a></div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
@@ -173,7 +173,7 @@
                     </div>
                     <div class="main_nav_menu ml-auto">
                         <ul class="standard_dropdown main_nav_dropdown">
-                            <li><a href="index.jsp">@Localizer["PHome"]<i class="fas fa-chevron-down"></i></a></li>
+                            <li><a asp-controller="home" asp-action="index">@Localizer["PHome"]<i class="fas fa-chevron-down"></i></a></li>
                             <li class="hassubs">
                                 <a href="#">@Localizer["PLastChanse"]<i class="fas fa-chevron-down"></i></a>
                                 <ul>
