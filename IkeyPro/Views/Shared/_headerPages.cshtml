@@ -63,7 +63,7 @@
                 <!-- Logo -->
                 <div class="col-lg-2 col-sm-3 col-3 order-1">
                     <div class="logo_container">
-                        <div class="logo"><a href="index.jsp">IkeyPro</a></div>
+                        <div class="logo"><a asp-controller="home" asp-action="index">IkeyPro</a></div>
                     </div>
                 </div>
                 <!-- Search -->
@@ -98,21 +98,43 @@
                                     <img src="~/images/cart.png" alt="">
                                     <div class="cart_count">
                                         <span>
-                                            <c:if test="${empty panier}">0</c:if>
-                                            <c:if test="${!empty panier}">${panier.size()}</c:if>
+                                           
+
+                                            @if (cartNombre == 0)
+                                            {
+                                                <label>0</label>
+                                            }
+                                            else
+                                            {
+                                                <label> @cartNombre</label>
+                                            }
                                         </span>
                                     </div>
                                 </div>
                                 <div class="cart_content">
                                     <div class="cart_text">
-                                        <a href="<c:if test="${empty panier}">
-                                            #</c:if>
-                                            <c:if test="${!empty panier}">Panier?action=AFFICHER</c:if>">@Localizer["PCart"]
-                                        </a>
+
+                                        @if (cartNombre == 0)
+                                        {
+                                            <a>@Localizer["PCart"] </a>
+                                        }
+                                        else
+                                        {
+                                            <a asp-controller="Panier" asp-action="index">@Localizer["PCart"] </a>
+                                        }
+
                                     </div>
                                     <div class="cart_price">
-                                        <c:if test="${empty total}">0$</c:if>
-                                        <c:if test="${!empty total}">${total}$</c:if>
+
+                                        @if (cartNombre == 0)
+                                        {
+                                            <label>0 $</label>
+                                        }
+                                        else
+                                        {
+                                            <label> @cartTotal $ </label>
+                                        }
+
                                     </div>
                                 </div>
                             </div>
@@ -134,41 +156,59 @@
                                     <div class="cat_menu_text">@Localizer["Pcategories"]</div>
                                 </div>
                                 <ul class="cat_menu">
-                                    <c:forEach var="ligne" items="${ListCat}">
-                                        <li><a href="ListeProduits?action=categorie&cat=${ligne.idCategorie}"> ${ligne.categorie} <i class="fas fa-chevron-right"></i></a></li>
-                                    </c:forEach>
+                                    @foreach (var cat in Cats)
+                                    {
+                                        <li><a href="/Shop/shopping?categorie=@cat.IdCategorie"> @cat.Categorie_Designation <i class="fas fa-chevron-right"></i></a></li>
+
+                                    }
+                                 
                                 </ul>
                             </div>
                             <!-- Main Nav Menu -->
                             <div class="main_nav_menu ml-auto">
                                 <ul class="standard_dropdown main_nav_dropdown">
-                                    <li><a href="index.jsp">@Localizer["PHome"]<i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a asp-controller="home" asp-action="index">@Localizer["PHome"]<i class="fas fa-chevron-down"></i></a></li>
                                     <li class="hassubs">
                                         <a href="#">@Localizer["PLastChanse"]<i class="fas fa-chevron-down"></i></a>
                                         <ul>
-                                            <c:forEach var="ligne" items="${ListeLastDispo}">
-                                                <li><a href="GererProduit?id=${ligne.codeProduit}">${ligne.produit}<i class="fas fa-chevron-down"></i></a></li>
-                                            </c:forEach>
+                                            @foreach (var produit in ListeLastDispo)
+                                            {
+                                                <li>
+                                                    <a href="/Home/produit?codeProduit=@produit.CodeProduit ">
+                                                        @produit.Designtion_produit<i class="fas fa-chevron-down"></i>
+                                                    </a>
+                                                </li>
+                                            }
                                         </ul>
                                     </li>
                                     <li class="hassubs">
                                         <a href="#">@Localizer["PEdition"]<i class="fas fa-chevron-down"></i></a>
                                         <ul>
-                                            <c:forEach var="ligne" items="${ListeEdition}">
-                                                <li><a href="ListeProduits?action=edition&edition=${ligne.id_Edition}">${ligne.edition}<i class="fas fa-chevron-down"></i></a> </li>
-                                            </c:forEach>
+                                            @foreach (var edition in ListeEditions)
+                                            {
+                                                <li>
+                                                    <a href="/Shop/Edition?edition=@edition.Id_Edition ">
+                                                        @edition.Edition_Designation<i class="fas fa-chevron-down"></i>
+                                                    </a>
+                                                </li>
+                                            }
                                         </ul>
                                     </li>
                                     <li class="hassubs">
                                         <a href="#">@Localizer["PFeaturedBrands"]<i class="fas fa-chevron-down"></i></a>
                                         <ul>
-                                            <c:forEach var="ligne" items="${ListeEditeurs}">
-                                                <li><a href="ListeProduits?action=editeur&edit=${ligne.id_Editeur}">${ligne.editeur}<i class="fas fa-chevron-down"></i></a> </li>
-                                            </c:forEach>
+                                            @foreach (var editeur in ListeEditeurs)
+                                            {
+                                                <li>
+                                                    <a href="/Shop/Editeur?editeur=@editeur.Id_Editeur ">
+                                                        @editeur.Editeur_Designation<i class="fas fa-chevron-down"></i>
+                                                    </a>
+                                                </li>
+                                            }
                                         </ul>
                                     </li>
-                                    <li><a href="Affichage?action=blog">@Localizer["PBlog"]<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="Affichage?action=contact">@Localizer["PContact"]<i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a asp-controller="home" asp-action="blog">@Localizer["PBlog"]<i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a asp-controller="home" asp-action="contact">@Localizer["PContact"]<i class="fas fa-chevron-down"></i></a></li>
                                 </ul>
                             </div>
                             <!-- Menu Trigger -->

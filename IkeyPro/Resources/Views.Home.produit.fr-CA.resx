@@ -120,11 +120,17 @@
   <data name="PAddToCart" xml:space="preserve">
     <value>Ajouter au panier</value>
   </data>
+  <data name="PDispo" xml:space="preserve">
+    <value>Quantité en stock</value>
+  </data>
   <data name="PEdition" xml:space="preserve">
     <value>Edition</value>
   </data>
   <data name="PLangue" xml:space="preserve">
     <value>Langue</value>
+  </data>
+  <data name="PNBconsult" xml:space="preserve">
+    <value>Nombre de consultation</value>
   </data>
   <data name="PNew" xml:space="preserve">
     <value>Nouveau</value>
