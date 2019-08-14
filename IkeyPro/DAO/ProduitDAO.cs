@@ -51,17 +51,6 @@ namespace IkeyPro.DAO
 
             sqlConnection.Close();
             return result;
-            /* 
-            CREATE PROCEDURE [dbo].[GetListeLegereProduitByCategorie]
-            @idCategorie nvarchar
-            AS
-	            SELECT CODE_PRODUIT, PRODUIT, PRIX,
-                       ID_EDITEUR, IMAGE, DISPONIBILITE
-	            FROM PRODUITS
-                WHERE ID_CATEGORIE =:@idCategorie
-	            ORDER BY PRODUIT DESC;
-            RETURN 0;
-            */
         }
         public static List<Produit> GetListeDesProduits()
         {
@@ -102,19 +91,6 @@ namespace IkeyPro.DAO
 
             sqlConnection.Close();
             return result;
-            /* 
-            CREATE PROCEDURE [dbo].[GetListeDesProduits]
-            AS
-                SELECT P.CODE_PRODUIT, P.PRODUIT,   P.DATE_RELEASE, P.PRIX, 
-                       P.PLATEFORME,   EUR.EDITEUR, ID_EDITEUR,     EON.EDITION,
-                       ID_EDITION,     P.LANGUE,    P.IMAGE,        P.DISPONIBILITE, 
-                       P.NBCONSULT 
-                FROM PRODUIT P
-                INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR
-                INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION
-                ORDER BY NBCONSULT DESC;
-            RETURN 0;
-            */
         }
         public static List<Produit> GetListeDesProduitsByName(string name)
         {
@@ -157,24 +133,6 @@ namespace IkeyPro.DAO
 
             sqlConnection.Close();
             return result;
-            /* 
-            CREATE PROCEDURE [dbo].[GetListeDesProduitsByName]
-            @name nvarchar
-            AS
-                SELECT  P.CODE_PRODUIT, P.PRODUIT,      P.DATE_RELEASE,  P.PRIX,       P.PLATEFORME, 
-                        EUR.EDITEUR,    P.ID_EDITEUR,   EON.EDITION,     P.ID_EDITION, 
-                        P.LANGUE,       P.IMAGE,        P.DISPONIBILITE, P.NBCONSULT 
-                FROM PRODUIT P 
-                INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR 
-                INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION 
-                INNER JOIN CATEGORIE C ON P.ID_CATEGORIE = C.ID_CATEGORIE 
-                WHERE LOWER(P.PRODUIT)    LIKE %@name% OR 
-                      LOWER(EUR.EDITEUR)  LIKE %@name% OR 
-                      LOWER(EON.EDITION)  LIKE %@name% OR 
-                      LOWER(P.PLATEFORME) LIKE %@name% OR 
-                      LOWER(C.CATEGORIE)  LIKE %@name%;
-            RETURN 0;
-            */
         }
         public static List<Editeur> GetListeDistinctEditeurByCat(string idCategorie)
         {
@@ -208,17 +166,6 @@ namespace IkeyPro.DAO
 
             sqlConnection.Close();
             return result;
-
-            /* 
-            CREATE PROCEDURE [dbo].[GetListeDistinctEditeurByCat]
-            @idCategorie nvarchar
-            AS
-                SELECT  DISTINCT(P.ID_EDITEUR), EUR.EDITEUR
-                FROM PRODUIT P 
-                INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR 
-                WHERE P.ID_CATEGORIE=:@idCategorie;
-            RETURN 0;
-            */
         }
         public static List<Edition> GetListeDistinctEditionByCat(string idCategorie, string idEditeur)
         {
@@ -253,19 +200,6 @@ namespace IkeyPro.DAO
 
             sqlConnection.Close();
             return result;
-
-            /* 
-            CREATE PROCEDURE [dbo].[GetListeDistinctEditionByCat]
-            @idCategorie nvarchar,
-            @idEditeur nvarchar
-            AS
-                SELECT  DISTINCT(P.ID_EDITION), EUR.EDITION
-                FROM PRODUIT P 
-                INNER JOIN EDITION EUR ON P.ID_EDITION = EUR.ID_EDITION 
-                WHERE P.ID_CATEGORIE=:@idCategorie AND
-                      P.ID_EDITEUR  =:@idEditeur;
-            RETURN 0;
-            */
         }
         public static List<string> GetListeDistinctLangue(string idCategorie, string idEditeur, string idEdition)
         {
@@ -296,23 +230,6 @@ namespace IkeyPro.DAO
 
             sqlConnection.Close();
             return result;
-
-            /* 
-            CREATE PROCEDURE [dbo].[GetListeDistinctLangue]
-            @idCategorie nvarchar,
-            @idEditeur nvarchar,
-            @idEdition nvarchar
-            AS
-                SELECT  DISTINCT(P.LANGUE) LANGUE
-                FROM PRODUIT P 
-                INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR 
-                INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION 
-                INNER JOIN CATEGORIE C ON P.ID_CATEGORIE = C.ID_CATEGORIE 
-                WHERE C.CATEGORIE  =:@idCategorie AND
-                      EUR.EDITEUR  =:@idEditeur AND
-                      EON.EDITION  =:@idEdition;
-            RETURN 0;
-            */
         }
         public static List<Produit> GetListeMostViewedProduit()
         {
@@ -353,20 +270,6 @@ namespace IkeyPro.DAO
 
             sqlConnection.Close();
             return result;
-            /* 
-            CREATE PROCEDURE [dbo].[GetListeMostViewedProduit]
-            AS
-                SELECT P.CODE_PRODUIT, P.PRODUIT,   P.DATE_RELEASE, P.PRIX, 
-                       P.PLATEFORME,   EUR.EDITEUR, ID_EDITEUR,     EON.EDITION,
-                       ID_EDITION,     P.LANGUE,    P.IMAGE,        P.DISPONIBILITE, 
-                       P.NBCONSULT 
-                FROM PRODUIT P
-                INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR
-                INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION
-                ORDER BY NBCONSULT DESC
-                FETCH FIRST 6 ROWS ONLY;
-            RETURN 0;
-            */
         }
         public static List<Produit> RechercheProduits(string idCategorie, string idEditeur, string idEdition)
         {
@@ -412,23 +315,6 @@ namespace IkeyPro.DAO
 
             sqlConnection.Close();
             return result;
-
-            /* 
-            CREATE PROCEDURE [dbo].[RechercheProduits]
-            @idCategorie nvarchar,
-            @idEditeur nvarchar,
-            @idEdition nvarchar
-            AS
-                SELECT P.CODE_PRODUIT, P.PRODUIT,   P.DATE_RELEASE, P.PRIX, 
-                       P.PLATEFORME,   EUR.EDITEUR, ID_EDITEUR,     EON.EDITION,
-                       ID_EDITION,     P.LANGUE,    P.IMAGE,        P.DISPONIBILITE, 
-                       P.NBCONSULT 
-                FROM PRODUIT P
-                WHERE C.CATEGORIE  =:@idCategorie AND
-                      EUR.EDITEUR  =:@idEditeur AND
-                      EON.EDITION  =:@idEdition;
-            RETURN 0;
-            */
         }
         public static List<Produit> GetListeFullProduitByCategorie(string idCategorie)
         {
@@ -471,19 +357,6 @@ namespace IkeyPro.DAO
 
             sqlConnection.Close();
             return result;
-            /* 
-            CREATE PROCEDURE [dbo].[GetListeFullProduitByCategorie]
-            @idCategorie nvarchar
-            AS
-	            SELECT P.CODE_PRODUIT,  P.PRODUIT,   P.DATE_RELEASE, P.PRIX, 
-                      P.PLATEFORME,     EUR.EDITEUR, ID_EDITEUR,     EON.EDITION,
-                      ID_EDITION,       P.LANGUE,    P.IMAGE,        P.DISPONIBILITE, P.NBCONSULT
-	            FROM PRODUITS P
-                INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR 
-                INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION 
-                WHERE ID_CATEGORIE =:@idCategorie;
-            RETURN 0;
-            */
         }
         public static List<Produit> GetListeFullProduitByEditeur(string idEditeur)
         {
@@ -526,19 +399,6 @@ namespace IkeyPro.DAO
 
             sqlConnection.Close();
             return result;
-            /* 
-            CREATE PROCEDURE [dbo].[GetListeFullProduitByEditeur]
-            @idEditeur nvarchar
-            AS
-	            SELECT P.CODE_PRODUIT,  P.PRODUIT,   P.DATE_RELEASE, P.PRIX, 
-                      P.PLATEFORME,     EUR.EDITEUR, ID_EDITEUR,     EON.EDITION,
-                      ID_EDITION,       P.LANGUE,    P.IMAGE,        P.DISPONIBILITE, P.NBCONSULT
-	            FROM PRODUITS P
-                INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR 
-                INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION 
-                WHERE P.ID_EDITEUR =:@idEditeur;
-            RETURN 0;
-            */
         }
         public static List<Produit> GetListeFullProduitByPublicite()
         {
@@ -577,19 +437,6 @@ namespace IkeyPro.DAO
 
             sqlConnection.Close();
             return result;
-            /* 
-            CREATE PROCEDURE [dbo].[GetListeFullProduitByPublicite]
-            AS
-	            SELECT P.CODE_PRODUIT,  P.PRODUIT,   P.DATE_RELEASE, P.PRIX, 
-                      P.PLATEFORME,     EUR.EDITEUR, ID_EDITEUR,     EON.EDITION,
-                      ID_EDITION,       P.LANGUE,    P.IMAGE,        P.DISPONIBILITE, P.NBCONSULT
-	            FROM PRODUITS P
-                INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR 
-                INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION 
-                WHERE P.PUBLICITE =2
-                ORDER BY P.PUBLICITE ASC;
-            RETURN 0;
-            */
         }
         public static List<Produit> GetListeFullProduitByEdition(string idEdition)
         {
@@ -632,19 +479,6 @@ namespace IkeyPro.DAO
 
             sqlConnection.Close();
             return result;
-            /* 
-            CREATE PROCEDURE [dbo].[GetListeFullProduitByEdition]
-            @idEdition nvarchar
-            AS
-	            SELECT P.CODE_PRODUIT,  P.PRODUIT,   P.DATE_RELEASE, P.PRIX, 
-                      P.PLATEFORME,     EUR.EDITEUR, ID_EDITEUR,     EON.EDITION,
-                      ID_EDITION,       P.LANGUE,    P.IMAGE,        P.DISPONIBILITE, P.NBCONSULT
-	            FROM PRODUITS P
-                INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR 
-                INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION 
-                WHERE ID_EDITION =:@idEdition;
-            RETURN 0;
-            */
         }
         public static List<Produit> GetListeFullProduitByDispo()
         {
@@ -683,18 +517,6 @@ namespace IkeyPro.DAO
 
             sqlConnection.Close();
             return result;
-            /* 
-            CREATE PROCEDURE [dbo].[GetListeFullProduitByDispo]
-            AS
-	            SELECT P.CODE_PRODUIT,  P.PRODUIT,   P.DATE_RELEASE, P.PRIX, 
-                      P.PLATEFORME,     EUR.EDITEUR, ID_EDITEUR,     EON.EDITION,
-                      ID_EDITION,       P.LANGUE,    P.IMAGE,        P.DISPONIBILITE, P.NBCONSULT
-	            FROM PRODUIT P
-                INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR 
-                INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION 
-                WHERE P.DISPONIBILITE = 1;
-            RETURN 0;
-            */
         }
         public static Produit GetProduit(string idProduit) {
             SqlConnection sqlConnection = DataManager.Get();
@@ -731,19 +553,6 @@ namespace IkeyPro.DAO
 
             sqlConnection.Close();
             return result;
-            /* 
-            CREATE PROCEDURE [dbo].[GetListeFullProduitByDispo]
-            @idProduit nvarchar
-            AS
-	            SELECT P.CODE_PRODUIT,  P.PRODUIT,   P.DATE_RELEASE, P.PRIX, 
-                      P.PLATEFORME,     EUR.EDITEUR, ID_EDITEUR,     EON.EDITION,
-                      ID_EDITION,       P.LANGUE,    P.IMAGE,        P.DISPONIBILITE, P.NBCONSULT
-	            FROM PRODUITS P
-                INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR 
-                INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION 
-                WHERE P.CODE_PRODUIT =:@idProduit;
-            RETURN 0;
-            */
         }
         public static Produit GetProduitVedette()
         {
@@ -778,18 +587,6 @@ namespace IkeyPro.DAO
 
             sqlConnection.Close();
             return result;
-            /* 
-            CREATE PROCEDURE [dbo].[GetProduitVedette]
-            AS
-	            SELECT P.CODE_PRODUIT,  P.PRODUIT,   P.DATE_RELEASE, P.PRIX, 
-                      P.PLATEFORME,     EUR.EDITEUR, ID_EDITEUR,     EON.EDITION,
-                      ID_EDITION,       P.LANGUE,    P.IMAGE,        P.DISPONIBILITE, P.NBCONSULT
-	            FROM PRODUITS P
-                INNER JOIN EDITEUR EUR ON P.ID_EDITEUR = EUR.ID_EDITEUR 
-                INNER JOIN EDITION EON ON P.ID_EDITION = EON.ID_EDITION 
-                WHERE P.PUBLICITE =1;
-            RETURN 0;
-            */
         }
         public static int UpdateNbConsult(string idProduit)
         {
@@ -812,24 +609,6 @@ namespace IkeyPro.DAO
             sqlConnection.Close();
 
             return result;
-
-
-            /*CREATE PROCEDURE [dbo].[UpdateNbConsult]
-             @idProduit NVARCHAR(50)
-             @newNbConsul NVARCHAR(50)
-
-             AS
-              
-             DECLARE @resultat int
-              
-             IF (SELECT count(CODE_PRODUIT) FROM Produit WHERE CODE_PRODUIT = @idProduit) = 0
-              BEGIN
-                  UPDATE PRODUIT SET NBCONSULT=:@newNbConsul;
-                  set @resultat = 1
-             END
-             ELSE
-                set @resultat = -1	
-            return @resultat*/
         }
     }
 }
