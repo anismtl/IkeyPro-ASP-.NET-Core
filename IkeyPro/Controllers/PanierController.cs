@@ -66,7 +66,14 @@ namespace IkeyPro.Controllers
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cartNombre", cart.Count());
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cartTotal", cart.Sum(item => item.Produit.Prix * item.Quantity));
-            return RedirectToAction("Index");
+            if (cart.Count() == 0)
+            {
+              return RedirectToAction("index", "home");
+            } else
+            {
+                return RedirectToAction("Index");
+            }
+            
         }
 
 

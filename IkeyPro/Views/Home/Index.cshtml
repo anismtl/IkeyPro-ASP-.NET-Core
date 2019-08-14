@@ -43,7 +43,7 @@ string year = DateTime.Now.ToString("yyyy");
                     <div class="col-lg-5 offset-lg-4 fill_height">
                         <div class="banner_content">
                             <h2 class="banner_text">@Localizer["PSlogan"]</h2>
-                            <div class="banner_price"><span>@ProduitVedette.Prix*2</span>@ProduitVedette.Prix</div>
+                            <div class="banner_price"><span>@(ProduitVedette.Prix*2)</span>@ProduitVedette.Prix</div>
                             <div class="banner_product_name">@ProduitVedette.Designtion_produit</div>
                             <div class="button banner_button"><a href="@Url.Action("Produit",  new { codeProduit = ProduitVedette.CodeProduit })" class="readMoreLink">@Localizer["PShopNow"]</a></div>
                         </div>
@@ -115,8 +115,8 @@ string year = DateTime.Now.ToString("yyyy");
                                 <div class="row fill_height">
                                     <div class="col-lg-4 col-md-6 fill_height">
                                         <div class="banner_2_content">
-                                            <div class="banner_2_category"><a href="GererProduit?id=@produit.CodeProduit">@produit.Editeur</a></div>
-                                            <div class="banner_2_title"><a href="GererProduit?id=@produit.CodeProduit">@produit.Designtion_produit</a></div>
+                                            <div class="banner_2_category"><a href="/Shop/Editeur?editeur=@produit.Editeur">@produit.Editeur</a></div>
+                                            <div class="banner_2_title"><a href="/home/produit?codeProduit=@produit.CodeProduit">@produit.Designtion_produit</a></div>
                                             <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet.</div>
                                             <div class="trends_price">@produit.Prix $</div>
                                             <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>

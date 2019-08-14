@@ -425,7 +425,7 @@ namespace IkeyPro.DAO
                     DateRelease = reader["DATE_RELEASE"].ToString(),
                     Prix = float.Parse(reader["PRIX"].ToString()),
                     Plateforme = reader["PLATEFORME"].ToString(),
-                    Editeur = reader["ID_EDITEUR"].ToString(),
+                    Editeur = reader["EDITEUR"].ToString(),
                     Edition = reader["ID_EDITION"].ToString(),
                     Langue = reader["LANGUE"].ToString(),
                     Image = reader["IMAGE"].ToString(),
