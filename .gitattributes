@@ -1,5 +1,5 @@
 @IkeyPro/* linguist-vendored
-*.cshtml linguist-language=C#
+*.css linguist-language=C#
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
