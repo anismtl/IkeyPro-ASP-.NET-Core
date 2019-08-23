@@ -1,5 +1,5 @@
 # IkeyPro-ASP-.NET-Core
-Modélisation et développement d’une application E-Commerce
+Développement d’une application E-Commerce
 -	Analyser les besoins et définir les spécifications. 
 -	Concevoir une architecture MVC.
 -	Utiliser ADO .NET pour la couche accès aux données DAO.
