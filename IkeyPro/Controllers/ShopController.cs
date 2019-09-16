@@ -13,7 +13,7 @@ namespace IkeyPro.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View("shop");
         }
 
         public IActionResult shopping(string categorie)
